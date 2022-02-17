@@ -4,14 +4,185 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>James Nickoli</title>
-    <style>
-        html {
-            background-image: url("https://www.pinclipart.com/picdir/big/220-2208572_under-construction-tape-clipart.png");
-            background-repeat: repeat;
-        }
-    </style>
+    <link rel="icon" type="image/gif" href="media/favicon.ico"/>
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/splide-skyblue.min.css">
+    <script src="scripts/splide.min.js"></script>
 </head>
 <body>
-    <h1>Site Under Construction</h1>
+    <div id="main">
+        <div class="back2" style="padding-top: 2em;padding-bottom: 1em;border-bottom: 1px solid #090f16;">
+            <p class="title">James Nickoli</p>
+            <p class="sub-title" style="border: none;">Software Developer</p>
+        </div>
+        <p class="header">About Me</p>
+        <p>I'm currently a computer science at McMaster University in Ontario. I've always had a drive to develop my programming and collaboration abilities. From competing with my <a href="https://www.raiderrobotics.org/">robotics team</a> in high school, to training as a member of the <a href="https://mcp-team.com/">McMaster Competitive Programming</a> team, I'm always learning and challenging myself. I also love to develop little programs that speed up my workflow, as well as video games.</p>
+        <p class="sub-title">Projects</p>
+        <div id="projects" style="border-top: 1px solid #090f16;">
+            <div id="proj1" class="back2" style="padding-bottom: 4em;">
+                <p style="display: inline-block;" class="header">Junk Escape</p><a style="display: inline-block;" href="https://rsninja.dev/games/junkEscape"><img src="media/2639850_link_icon.svg" width="20"></a>
+                <ul>
+                    <li class="dash-list">Javascript</li>
+                    <li class="dash-list">Worked with an artist</li>
+                    <li class="dash-list">Game Jam entry</li>
+                    <li class="dash-list">1 week development time</li>
+                </ul>
+                <p style="padding-left: 2em;">Junk Escape is a game I developed in 1 week for the <a href="https://itch.io/jam/cgj">Community Game Jam</a>. I collaborated with a dedicated <a href="https://kondroel.artstation.com/">artist</a> who worked off of my designs for levels, enemies, and character parts. I programmed everything in Javascript with the help of a game library I created that. Everything from asset loading, to audio management, to the camera system was done in pure JS (as a way to learn, I have nothing against using libraries or engines). You can play it <a href="https://rsninja.dev/games/junkEscape">on my website</a></p>
+                <div style="text-align:center">
+                    <div class="inline">
+                        <p>Gameplay</p>
+                        <!-- https://www.youtube.com/embed/dJG3LaP8JH4?autoplay=1&mute=1 -->
+                        <iframe class="shadow" id="video-player" width="640" height="480" src="https://www.youtube-nocookie.com/embed/dJG3LaP8JH4?autoplay=1&mute=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="inline">
+                        <p>Screenshots</p>
+                        <div class="splide shadow">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    <li class="splide__slide"><img src="media/JunkEscape1.PNG"></li>
+                                    <li class="splide__slide"><img src="media/JunkEscape2.PNG"></li>
+                                    <li class="splide__slide"><img src="media/JunkEscape3.PNG"></li>
+                                    <li class="splide__slide"><img src="media/JunkEscape4.PNG"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="proj2" style="padding-bottom: 4em;">
+                <p style="display: inline-block;" class="header">GameJ</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
+                <ul>
+                    <li class="dash-list">Java</li>
+                    <li class="dash-list">Multithreading</li>
+                    <li class="dash-list">Hardware accelerated graphics</li>
+                    <li class="dash-list">Documentation</li>
+                </ul>
+                <p style="padding-left: 2em;">GameJ is a game engine I developed slowly over the course of a year. It features separate update and rendering threads, GPU rendering, asset loading, a camera system, input handling, a debug system, and collision detection.I made it one of my goals to clearly organize and comment my code, as well as create <a href="https://rsninja.dev/gamej/">documentation</a> for the code base.</p>
+            </div>
+
+            <div id="proj3" class="back2" style="padding-bottom: 4em;">
+                <p style="display: inline-block;" class="header">Master Mind</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
+                <ul>
+                    <li class="dash-list">Java</li>
+                    <li class="dash-list">Multiplayer</li>
+                    <li class="dash-list">Pair Programming</li>
+                </ul>
+                <p style="padding-left: 2em;">A multiplayer version of the classic Mastermind board game made with Netty for networking and GameJ for the interface. The <a href="https://github.com/rsninja722/MasterMindServer">server</a> portion was programmed together with my friend, and then we created our separate clients that connected. <a href="https://www.youtube.com/watch?v=EvB82nGISPg">This video shows a game played with my client (left) and my friends client (right).</a></p>
+                <div style="text-align:center">
+                    <div class="inline">
+                        <p>Game Client</p>
+                        <img src="media/mastermind.png" style="max-width: 100%;" class="shadow">
+                    </div>
+                </div>
+            </div>
+
+            <div id="proj4" style="padding-bottom: 4em;">
+                <p style="display: inline-block;" class="header">Editor?</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
+                <ul>
+                    <li class="dash-list">Java</li>
+                    <li class="dash-list">Multiplayer</li>
+                    <li class="dash-list">Pair Programming</li>
+                </ul>
+                <p style="padding-left: 2em;">A multiplayer version of the classic Mastermind board game made with Netty for networking and GameJ for the interface. The <a href="https://github.com/rsninja722/MasterMindServer">server</a> portion was programmed together with my friend, and then we created our separate clients that connected. <a href="https://www.youtube.com/watch?v=EvB82nGISPg">This video shows a game played with my client (left) and my friends client (right).</a></p>
+                <div style="text-align:center">
+                    <div class="inline">
+                        <p>Game Client</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="proj5" class="back2" style="padding-bottom: 4em;border-bottom: 1px solid #090f16;">
+                <p style="display: inline-block;" class="header">Public Website</p><a style="display: inline-block;" href="https://rsninja.dev"><img src="media/2639850_link_icon.svg" width="20"></a>
+                <ul>
+                    <li class="dash-list">Javascript/HTML/CSS</li>
+                </ul>
+                <p style="padding-left: 2em;">My <a href="https://rsninja.dev">public website</a> (under my online pseudonym rsninja dev), hosts all my playable web game, blog, photography gallery, and other projects.</p>
+                <img src="media/website.PNG" style="max-width: 100%;" class="shadow">
+            </div>
+        </div>
+
+        <div id="skills" >
+            <p class="sub-title">Skills</p>
+            <p style="text-align: center;">What I have worked with while developing games/software</p>
+            <div style="text-align:center">
+                <div class="inline">
+                    <p>Languages</p>
+                    <ul>
+                        <li class="dash-list">Javascript</li>
+                        <li class="dash-list">Java</li>
+                        <li class="dash-list">Python</li>
+                        <li class="dash-list">c/c++</li>
+                        <li class="dash-list">c#</li>
+                        <li class="dash-list">Haskell</li>
+                        <li class="dash-list">Elm</li>
+                        <li class="dash-list">HTML/CSS</li>
+                    </ul>
+                </div>
+                <div class="inline">
+                    <p>Software</p>
+                    <ul>
+                        <li class="dash-list">Audacity</li>
+                        <li class="dash-list">Blender</li>
+                        <li class="dash-list">Davinci Resolve</li>
+                        <li class="dash-list">GIMP</li>
+                        <li class="dash-list">OBS</li>
+                        <li class="dash-list">Unity</li>
+                    </ul>
+                </div>
+                <div class="inline">
+                    <p>Technologies</p>
+                    <ul>
+                        <li class="dash-list">Node.js</li>
+                        <li class="dash-list">SQLite</li>
+                        <li class="dash-list">Git</li>
+                        <li class="dash-list">Github</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="non-technical" style="border-top: 1px solid #090f16;">
+            <p class="sub-title">Non-Technical</p>
+            <p>I like to dip my toe into the waters of different creative fields to get a sense of the time and effort needed, and the workflow. Here are some works I've created:</p>
+            <div style="text-align:center">
+                <div class="inline">
+                    <p>Artwork</p>
+                    <img src="media/pixel2.gif" style="width:275px;image-rendering: pixelated;image-rendering: -moz-crisp-edges;" class="shadow">
+                    <br>
+                    <img src="media/pixel1.png"style="image-rendering: pixelated;image-rendering: -moz-crisp-edges;" class="shadow">
+                </div>
+                <div class="inline">
+                    <p>Photography</p>
+                    <a href="https://i.ibb.co/sWtMgyk/185.jpg"><img src="https://i.ibb.co/J3CMc50/185.jpg" style="max-width: 100%;" class="shadow"></a>
+                    <br>
+                    <a href="https://i.ibb.co/tLc9qm1/169.jpg"><img src="https://i.ibb.co/5KvPrMJ/169.jpg" style="max-width: 100%;" class="shadow"></a>
+                </div>
+                <div class="inline">
+                    <p>Audio</p>
+                    <p>8 Bit Jazz</p>
+                    <audio controls src="media/8bitJazz.mp3">8bitJazz</audio>
+                    <p>laser beam</p>
+                    <audio controls src="media/laser.mp3">laser</audio>
+                </div>
+                <div class="inline">
+                    <p>3D Modeling</p>
+                    <img src="media/3d.png" style="max-width: 100%;" class="shadow">
+                </div>
+            </div>
+            
+            <p>pixelart photo music soundEffect</p>
+        </div>
+    </div>
+    
+    <div id="info-bar">
+        <img src="media/352510_local_phone_icon.svg" width="48" height="48"> <span>text: (226)-268-5095</span><br>
+        <img src="media/1814108_email_envenlope_letter_mail_icon.svg" width="48" height="48"> <span><a href="mailto:contact@jamesnicko.li">contact@jamesnicko.li</a></span>
+        github
+        site
+    </div>
+    
+    <script src="scripts/main.js"></script>
 </body>
 </html>

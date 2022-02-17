@@ -1,2 +1,6 @@
 # JamesNickoli.github.io
-main site
+portfolio site
+
+## libraries
+
+[splide](splidejs.com)
