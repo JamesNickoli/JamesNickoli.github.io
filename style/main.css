@@ -64,8 +64,9 @@ ul {
     vertical-align: top;
 }
 
-#main {
-    margin: 0em 2em 0em 2em;
+#main > div {
+    padding-left: 2em;
+    padding-right: 2em;
 }
 
 #info-bar {
@@ -73,6 +74,7 @@ ul {
     background-color: #090f16;
     position: relative;
     color: white;
+    padding: 1em;
 }
 
 #info-bar a {
@@ -87,6 +89,11 @@ ul {
     color: #9edefd;
 }
 
+#info-bar .inline {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
 @media (min-width: 1000px) {
     #info-bar {
         position: fixed;
@@ -94,6 +101,11 @@ ul {
         top: 0px;
         width:15em;
         height: 100%;
+    }
+
+    #info-bar .inline {
+        padding-left: 0;
+        padding-right: 0;
     }
 
     #main {
