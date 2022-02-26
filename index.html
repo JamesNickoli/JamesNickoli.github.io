@@ -10,24 +10,35 @@
     <script src="scripts/splide.min.js"></script>
 </head>
 <body>
+    <div id="top-nav">
+        <span><a href="#top">Top</a></span>
+        <span><a href="#about">About</a></span>
+        <span><a href="#projects">Projects</a></span>
+        <span><a href="#skills">Skills</a></span>
+        <span><a href="#non-code">Non-Code</a></span>
+        <span id="contact-link"><a href="#contact">Contact</a></span>
+    </div>
     <div id="main">
-        <div class="back2" style="padding-top: 2em;padding-bottom: 1em;border-bottom: 1px solid #090f16;">
+        <a id="top"></a>
+        <div class="back2" style="padding-top: 2em;padding-bottom: 1em;border-bottom: 2px solid #174166;">
             <p class="title">James Nickoli</p>
             <p class="sub-title" style="border: none;">Software Developer</p>
         </div>
+        <a id="about"></a>
         <p class="header">About Me</p>
         <p style="padding-left: 2em;padding-right: 2em;">I'm currently a computer science at McMaster University in Ontario. I've always had a drive to develop my programming and collaboration abilities. From competing with my <a href="https://www.raiderrobotics.org/">robotics team</a> in high school, to training as a member of the <a href="https://mcp-team.com/">McMaster Competitive Programming</a> team, I'm always learning and challenging myself. I also love to develop little programs that speed up my workflow, as well as video games.</p>
-        <p class="sub-title">Projects</p>
-        <div id="projects" style="border-top: 1px solid #090f16;padding: 0 0 0 0;">
+        <div style="border-top: 2px solid #174166;padding: 0 0 0 0;">
+            <a id="projects"></a>
+            <p class="header">Projects</p>
             <div id="proj1" class="back2" style="padding-bottom: 4em;">
-                <p style="display: inline-block;" class="header">Junk Escape</p><a style="display: inline-block;" href="https://rsninja.dev/games/junkEscape"><img src="media/2639850_link_icon.svg" width="20"></a>
+                <p style="display: inline-block;" class="header header-small">Junk Escape</p><a style="display: inline-block;" href="https://rsninja.dev/games/junkEscape"><img src="media/2639850_link_icon.svg" width="20"></a>
                 <ul>
                     <li class="dash-list">Javascript</li>
                     <li class="dash-list">Worked with an artist</li>
                     <li class="dash-list">Game Jam entry</li>
                     <li class="dash-list">1 week development time</li>
                 </ul>
-                <p style="padding-left: 2em;padding-right: 2em;">Junk Escape is a game I developed in 1 week for the <a href="https://itch.io/jam/cgj">Community Game Jam</a>. I collaborated with a dedicated <a href="https://kondroel.artstation.com/">artist</a> who worked off of my designs for levels, enemies, and character parts. I programmed everything in Javascript with the help of a game library I created that. Everything from asset loading, to audio management, to the camera system was done in pure JS (as a way to learn, I have nothing against using libraries or engines). You can play it <a href="https://rsninja.dev/games/junkEscape">on my website</a></p>
+                <p style="padding-left: 2em;padding-right: 2em;">Junk Escape is a game I developed in 1 week for the <a href="https://itch.io/jam/cgj">Community Game Jam</a>. I collaborated with a dedicated <a href="https://kondroel.artstation.com/">artist</a> who worked off of my designs for levels, enemies, and character parts. Everything from asset loading, to audio management, to the camera system was done in pure JS (as a way to learn, I have nothing against using libraries or engines). You can play it <a href="https://rsninja.dev/games/junkEscape">on my website</a></p>
                 <div style="text-align:center">
                     <div class="inline">
                         <p>Gameplay</p>
@@ -52,34 +63,18 @@
 
 
             <div id="proj2" style="padding-bottom: 4em;">
-                <p style="display: inline-block;" class="header">GameJ</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
+                <p style="display: inline-block;" class="header header-small">GameJ</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
                 <ul>
                     <li class="dash-list">Java</li>
                     <li class="dash-list">Multithreading</li>
                     <li class="dash-list">Hardware accelerated graphics</li>
                     <li class="dash-list">Documentation</li>
                 </ul>
-                <p style="padding-left: 2em;padding-right: 2em;">GameJ is a game engine I developed slowly over the course of a year. It features separate update and rendering threads, GPU rendering, asset loading, a camera system, input handling, a debug system, and collision detection.I made it one of my goals to clearly organize and comment my code, as well as create <a href="https://rsninja.dev/gamej/">documentation</a> for the code base.</p>
+                <p style="padding-left: 2em;padding-right: 2em;">GameJ is a game engine I developed slowly over the course of a year. It features separate update and rendering threads, GPU rendering, asset loading, a camera system, input handling, a debug system, and collision detection. I made it one of my goals to clearly organize and comment my code, as well as create <a href="https://rsninja.dev/gamej/">documentation</a> for the code base.</p>
             </div>
 
             <div id="proj3" class="back2" style="padding-bottom: 4em;">
-                <p style="display: inline-block;" class="header">Master Mind</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
-                <ul>
-                    <li class="dash-list">Java</li>
-                    <li class="dash-list">Multiplayer</li>
-                    <li class="dash-list">Pair Programming</li>
-                </ul>
-                <p style="padding-left: 2em;padding-right: 2em;">A multiplayer version of the classic Mastermind board game made with Netty for networking and GameJ for the interface. The <a href="https://github.com/rsninja722/MasterMindServer">server</a> portion was programmed together with my friend, and then we created our separate clients that connected. <a href="https://www.youtube.com/watch?v=EvB82nGISPg">This video shows a game played with my client (left) and my friends client (right).</a></p>
-                <div style="text-align:center">
-                    <div class="inline">
-                        <p>Game Client</p>
-                        <img src="media/mastermind.png" style="max-width: 100%;" class="shadow">
-                    </div>
-                </div>
-            </div>
-
-            <!-- <div id="proj4" style="padding-bottom: 4em;">
-                <p style="display: inline-block;" class="header">Editor?</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
+                <p style="display: inline-block;" class="header header-small">Master Mind</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
                 <ul>
                     <li class="dash-list">Java</li>
                     <li class="dash-list">Multiplayer</li>
@@ -89,29 +84,30 @@
                 <div style="text-align:center">
                     <div class="inline">
                         <p>Game Client</p>
+                        <img src="media/mastermind.png" style="max-width: 70%;" class="shadow">
                     </div>
                 </div>
-            </div> -->
+            </div>
 
-
-            <!-- <div id="proj5" class="back2" style="padding-bottom: 4em;border-bottom: 1px solid #090f16;"> -->
-            <div id="proj5" style="padding-bottom: 4em;border-bottom: 1px solid #090f16;">
-                <p style="display: inline-block;" class="header">Public Website</p><a style="display: inline-block;" href="https://rsninja.dev"><img src="media/2639850_link_icon.svg" width="20"></a>
+            <div id="proj4" style="padding-bottom: 4em;border-bottom: 2px solid #174166;">
+                <p style="display: inline-block;" class="header header-small">Public Website</p><a style="display: inline-block;" href="https://rsninja.dev"><img src="media/2639850_link_icon.svg" width="20"></a>
                 <ul>
                     <li class="dash-list">Javascript/HTML/CSS</li>
+                    <li class="dash-list">long term maintenance</li>
                 </ul>
-                <p style="padding-left: 2em;padding-right: 2em;">My <a href="https://rsninja.dev">public website</a> (under my online pseudonym rsninja dev), hosts all my playable web game, blog, photography gallery, and other projects.</p>
+                <p style="padding-left: 2em;padding-right: 2em;">My <a href="https://rsninja.dev">public website</a> (under my online pseudonym rsninja dev), hosts all my playable web game, blog, photography gallery, and other projects. I've maintained, changed, and added onto my website for over 4 years. Through this I've learned to actively find old code that breaks because of new changes.</p>
                 <img src="media/website.PNG" style="max-width: 100%;" class="shadow">
             </div>
         </div>
 
-        <div id="skills" >
-            <p class="sub-title">Skills</p>
+        <div>
+            <a id="skills"></a>
+            <p class="header">Skills</p>
             <p style="text-align: center;">What I have worked with while developing games/software</p>
             <div style="text-align:center">
                 <div class="inline">
                     <p>Languages</p>
-                    <ul>
+                    <ul style="padding-inline-start: 0.5em;">
                         <li class="dash-list">Javascript</li>
                         <li class="dash-list">Java</li>
                         <li class="dash-list">Python</li>
@@ -124,7 +120,7 @@
                 </div>
                 <div class="inline">
                     <p>Software</p>
-                    <ul>
+                    <ul style="padding-inline-start: 0.5em;">
                         <li class="dash-list">Audacity</li>
                         <li class="dash-list">Blender</li>
                         <li class="dash-list">Davinci Resolve</li>
@@ -135,7 +131,7 @@
                 </div>
                 <div class="inline">
                     <p>Technologies</p>
-                    <ul>
+                    <ul style="padding-inline-start: 0.5em;">
                         <li class="dash-list">Node.js</li>
                         <li class="dash-list">SQLite</li>
                         <li class="dash-list">Git</li>
@@ -144,8 +140,9 @@
                 </div>
             </div>
         </div>
-        <div id="non-technical" style="border-top: 1px solid #090f16;">
-            <p class="sub-title">Non-Technical</p>
+        <div id="non-technical" style="border-top: 2px solid #174166;">
+            <a id="non-code"></a>
+            <p class="header">Non-Code</p>
             <p>I like to dip my toe into the waters of different creative fields to get a sense of the time and effort needed, and the workflow. Here are some works I've created:</p>
             <div style="text-align:center">
                 <div class="inline">
@@ -176,20 +173,20 @@
     </div>
     
     <div id="info-bar">
+        <a id="contact"></a>
         <div style="text-align:center">
             <div class="inline" style="text-align:left">
                 <p style="font-size: 2em;">Contact</p>
                 <img src="media/352510_local_phone_icon.svg" width="48" height="48" style="vertical-align: middle;"> <span>text: (226)-268-5095</span><br><br>
-                <img src="media/1814108_email_envenlope_letter_mail_icon.svg" width="48" height="48" style="vertical-align: middle;"> <span><a href="mailto:contact@jamesnicko.li">contact@jamesnicko.li</a></span><br>
+                <img src="media/1814108_email_envenlope_letter_mail_icon.svg" width="48" height="48" style="vertical-align: middle;"> <span><a class="hov-highlight" href="mailto:contact@jamesnicko.li">contact@jamesnicko.li</a></span><br>
             </div>
             <div class="inline" style="text-align:left">
                 <p style="font-size: 2em;">Social</p>
-                <img src="media/GitHub-Mark-Light-32px.png" style="vertical-align: middle;"> <span><a href="https://github.com/rsninja722">github.com/rsninja722</a></span><br><br>
-                <img src="media/web.png" style="vertical-align: middle;" width="32" height="32"> <span><a href="https://rsninja.dev">rsninja.dev</a></span>
+                <img src="media/GitHub-Mark-Light-32px.png" style="vertical-align: middle;"> <span><a class="hov-highlight" href="https://github.com/rsninja722">github.com/rsninja722</a></span><br><br>
+                <img src="media/web.png" style="vertical-align: middle;" width="32" height="32"> <span><a class="hov-highlight" href="https://rsninja.dev">rsninja.dev</a></span>
             </div>
-        
     </div>
-    
+
     <script src="scripts/main.js"></script>
 </body>
 </html>
