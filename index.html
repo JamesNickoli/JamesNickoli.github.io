@@ -10,13 +10,17 @@
     <script src="scripts/splide.min.js"></script>
 </head>
 <body>
+    <div id="hamburger-button" onclick="show()" style="cursor: pointer;">
+        <div id="hamburger"></div>
+    </div>
     <div id="top-nav">
-        <span><a href="#top">Top</a></span>
-        <span><a href="#about">About</a></span>
-        <span><a href="#projects">Projects</a></span>
-        <span><a href="#skills">Skills</a></span>
-        <span><a href="#non-code">Non-Code</a></span>
-        <span id="contact-link"><a href="#contact">Contact</a></span>
+        <a onclick="hide()"><div style="cursor: pointer;"><span style="color: #ffbebe;font-family: consolas;">X</span></div></a>
+        <a href="#top"><div><span>Top</span></div></a>
+        <a href="#about"><div><span>About</span></div></a>
+        <a href="#projects"><div><span>Projects</span></div></a>
+        <a href="#skills"><div><span>Skills</span></div></a>
+        <a href="#non-code"><div><span>Non-Code</span></div></a>
+        <a href="#contact"><div id="contact-link"><span>Contact</span></div></a>
     </div>
     <div id="main">
         <a id="top"></a>
