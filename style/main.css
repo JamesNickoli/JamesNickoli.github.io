@@ -53,18 +53,69 @@ html {
     }
 }
 
-@keyframes slideInFromLeft {
+@keyframes fadeIn {
     0% {
-        transform: none;
+        opacity: 0;
     }
     100% {
-        transform: none;
+        opacity: 1;
     }
 }
 
-div {  
-    /* This section calls the slideInFromLeft animation we defined above */
-    animation: 1s ease-out 0s 1 slideInFromLeft;
+body {
+    animation: 1s ease-out 0s 1 fadeIn;
+}
+
+span, a {
+    display: inline-block;
+}
+
+.link-a {
+    display: block;
+}
+
+span > span {
+    animation: none !important;
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.fade-up-anim {
+    animation: 1s ease-out 0s 1 fadeUp;
+}
+
+.fade-up-anim-ready {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+@keyframes fadeLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.fade-left-anim{
+    animation: 1s ease-out 0s 1 fadeLeft;
+}
+
+.fade-left-anim-ready {
+    opacity: 0;
+        transform: translateX(50px);
 }
 
 .dash-list {
@@ -113,7 +164,7 @@ div {
 }
 
 .back2 {
-    background-color: #f6f7f9;
+    background-color: #75809b1f;
 }
 
 .inline {
@@ -208,59 +259,6 @@ div {
     padding-right: 2em;
 }
 
-/*
-#nav {
-    position: fixed;
-    top: 0;
-    left: -9em;
-    width: 8em;
-    transition: left 0.3s ease-in-out;
-    box-shadow: 3px 0px 1px -2px rgb(0 0 0 / 40%), 2px 0px 2px 0px rgb(0 0 0 / 30%), 1px 0px 5px 0px rgb(0 0 0 / 25%);
-    backdrop-filter: blur(6px);
-    background-color: #ffffff77;
-    overflow-wrap: break-word;
-}
-
-#nav .toggle-btn {
-    position: absolute;
-    top: 2px;
-    left: 9.5em;
-    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    margin: 0;
-}
-
-#nav div {
-    margin-left: 1em;
-}
-
-.toggle-btn span {
-    width: 25px;
-    height: 4px;
-    border-radius: 2px;
-    background: #174166;
-    display: block;
-    margin-top: 3px;
-    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 40%), 0px 2px 2px 0px rgb(0 0 0 / 30%), 0px 1px 5px 0px rgb(0 0 0 / 25%);
-}
-
-#nav.active {
-    left: 0;
-}
-
-#navTop.active {
-    transform: rotate(45deg);
-    top: 8px;
-}
-
-#navBot.active {
-    transform: rotate(-45deg);
-    top: -8px;
-}
-
-#navMid.active {
-    opacity: 0;
-} */
-
 #toggle-hamburger {
     position: fixed;
     top: 2px;
@@ -316,6 +314,7 @@ div {
 
 .navbar {
     position: fixed;
+    z-index: 100;
     top: 2px;
     left: 2px;
     transition: left 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.3s ease-in-out;
@@ -344,9 +343,6 @@ input#toggle:checked~.content {
 input#toggle:checked~.navbar {
     left: 10em;
 }
-
-
-
 
 
 @media (min-width: 1000px) {
@@ -417,12 +413,11 @@ input#toggle:checked~.navbar {
 .container::after {
     content: '';
     position: absolute;
-    width: 25px;
-    height: 25px;
-    right: -17px;
-    background-color: white;
-    border: 4px solid #44668d;
-    top: 15px;
+    width: 24px;
+    height: 24px;
+    right: -12px;
+    background-color: #44668d;
+    top: 30px;
     border-radius: 50%;
     z-index: 1;
 }
@@ -464,7 +459,7 @@ input#toggle:checked~.navbar {
 }
 
 .right::after {
-    left: -16px;
+    left: -12px;
 }
 
 .content {
@@ -475,18 +470,19 @@ input#toggle:checked~.navbar {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     display: grid;
     grid-template-columns: 4em 1fr;
-    transition: all ease-in-out 0.3s;
+    transition: all ease-in-out 0.2s;
 }
 
 
 .content:hover {
     transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.23);
 }
 
 
 @media screen and (max-width: 900px) {
     .timeline::after {
-        left: 31px;
+        left: 27px;
     }
 
     .container {

@@ -6,29 +6,31 @@
     <title>James Nickoli</title>
     <link rel="icon" type="image/gif" href="media/favicon.ico"/>
     <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/background.css">
     <link rel="stylesheet" href="style/splide-skyblue.min.css">
     <script src="scripts/splide.min.js"></script>
 </head>
 <body>
-    <!-- <div id="nav">
-            <div class="toggle-btn" onclick="toggleMenu()">
-                <span id="navTop"></span>
-                <span id="navMid"></span>
-                <span id="navBot"></span>
-            </div>
-            <a href="#top"><div><span>Top</span></div></a>
-            <a href="#about"><div><span>About</span></div></a>
-            <a href="#projects"><div><span>Projects</span></div></a>
-            <a href="#skills"><div><span>Skills</span></div></a>
-            <a href="#non-code"><div><span>Non-Code</span></div></a>
-            <a href="#contact"><div id="contact-link"><span>Contact</span></div></a>
-    </div> -->
+    <div id="fancy-background">
+        <div id="triangle1"></div>
+        <div id="triangle2"></div>
+        <div id="triangle3"></div>
+        <div id="triangle4"></div>
+        <div id="triangle5"></div>
+        <div id="triangle6"></div>
+        <div id="triangle7"></div>
+        <div id="triangle8"></div>
+        <div id="triangle9"></div>
+        <div id="triangle10"></div>
+    </div>
+    <div id="fancy-background-blur"></div>
 
     <input type="checkbox" id="toggle" name="toggle">
 
     <ul class="navigation-menu">
         <li><a href="#top"><div><span>Top</span></div></a></li>
         <li><a href="#about"><div><span>About</span></div></a></li>
+        <li><a href="#experience"><div><span>Experience</span></div></a></li>
         <li><a href="#projects"><div><span>Projects</span></div></a></li>
         <li><a href="#skills"><div><span>Skills</span></div></a></li>
         <li><a href="#non-code"><div><span>Non-Code</span></div></a></li>
@@ -37,51 +39,43 @@
 
     <div class="navbar">
     <label for="toggle" id="toggle-hamburger">
-        <span id="navTop"></span>
+        <span id="navTop" style="position: relative;z-index: 10000;"></span>
         <span id="navMid"></span>
         <span id="navBot"></span>
     </label>
     </div>
-
-    <!-- <div id="hamburger-button" onclick="show()" style="cursor: pointer;">
-        <div id="hamburger"></div>
-    </div>
-    <div id="top-nav">
-        <a onclick="hide()"><div style="cursor: pointer;"><span style="color: #ffbebe;font-family: consolas;">X</span></div></a>
-        
-    </div> -->
     <div id="main">
-        <a id="top"></a>
+        <a id="top" class="link-a"></a>
         <div class="back2" style="padding-top: 2em;padding-bottom: 1em;border-bottom: 2px solid #174166;">
-            <p class="title">Test</p>
+            <p class="title">James Nickoli</p>
             <p class="sub-title" style="border: none;">Software Developer</p>
         </div>
-        <a id="about"></a>
+        <a id="about" class="link-a"></a>
         <p class="header">About Me</p>
         <p style="padding-left: 2em;padding-right: 2em;">I'm currently a computer science student at McMaster University in Ontario. I've always had a drive to develop my programming and collaboration abilities. From competing with my <a href="https://www.raiderrobotics.org/">robotics team</a> in high school, to training as a member of the <a href="https://mcp-team.com/">McMaster Competitive Programming</a> team, I'm always learning and challenging myself. I also love to develop little programs that speed up my workflow, as well as video games.</p>
         <div class="back2" style="border-top: 2px solid #174166;padding: 0 0 1em 0;">
-            <a id="experience"></a>
+            <a id="experience" class="link-a"></a>
             <p class="header">Experience</p>
 
             <div class="timeline">
                 <div class="container left">
                     <div class="content">
                         <div><img src="media/BVGLogo.png" style="padding-right: 0.5em;width: 4em;"></div>
-                        <div><span>Big Viking Games</span><span style="color: #b8c8da;"> 2022</span></div>
+                        <div><span>Big Viking Games&emsp;<span style="color: #b8c8da;">2022</span></span></div>
                         <div style="grid-column-end: span 2;"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas expedita maiores ex consequatur atque eius perspiciatis, harum explicabo eveniet porro facere laboriosam nostrum necessitatibus. Quod animi harum debitis enim voluptatibus!</p></div>
                     </div>
                 </div>
                 <div class="container right">
                     <div class="content">
                         <div><img src="media/MCPLogo.png" style="padding-right: 0.5em;width: 4em;"></div>
-                        <div><span>McMaster Competitive Programming</span><span style="color: #b8c8da;"> 2022</span></div>
+                        <div><span>McMaster Competitive Programming&emsp;<span style="color: #b8c8da;">2022</span></span></div>
                         <div style="grid-column-end: span 2;"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas expedita maiores ex consequatur atque eius perspiciatis, harum explicabo eveniet porro facere laboriosam nostrum necessitatibus. Quod animi harum debitis enim voluptatibus!</p></div>
                     </div>
                 </div>
                 <div class="container left">
                     <div class="content">
                         <div><img src="media/robotics.png" style="padding-right: 0.5em;width: 4em;"></div>
-                        <div><span>FRC team 5024</span><span style="color: #b8c8da;"> 2017-2020</span></div>
+                        <div><span>FRC team 5024&emsp;<span style="color: #b8c8da;">2017-2020</span></span></div>
                         <div style="grid-column-end: span 2;"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas expedita maiores ex consequatur atque eius perspiciatis, harum explicabo eveniet porro facere laboriosam nostrum necessitatibus. Quod animi harum debitis enim voluptatibus!</p></div>
                     </div>
                 </div>
@@ -89,7 +83,7 @@
         </div>
         
         <div style="border-top: 2px solid #174166;padding: 0 0 0 0;">
-            <a id="projects"></a>
+            <a id="projects" class="link-a"></a>
             <p class="header">Projects</p>
             <div id="proj1" class="back2" style="padding-bottom: 4em;">
                 <p style="display: inline-block;" class="header header-small">Junk Escape</p><a style="display: inline-block;" href="https://rsninja.dev/games/junkEscape"><img src="media/2639850_link_icon.svg" width="20"></a>
@@ -111,10 +105,10 @@
                         <div class="splide shadow">
                             <div class="splide__track">
                                 <ul class="splide__list">
-                                    <li class="splide__slide"><img src="media/JunkEscape1.PNG"></li>
-                                    <li class="splide__slide"><img src="media/JunkEscape2.PNG"></li>
-                                    <li class="splide__slide"><img src="media/JunkEscape3.PNG"></li>
-                                    <li class="splide__slide"><img src="media/JunkEscape4.PNG"></li>
+                                    <li class="splide__slide ignore-anim"><img src="media/JunkEscape1.PNG" class="ignore-anim"></li>
+                                    <li class="splide__slide ignore-anim"><img src="media/JunkEscape2.PNG" class="ignore-anim"></li>
+                                    <li class="splide__slide ignore-anim"><img src="media/JunkEscape3.PNG" class="ignore-anim"></li>
+                                    <li class="splide__slide ignore-anim"><img src="media/JunkEscape4.PNG" class="ignore-anim"></li>
                                 </ul>
                             </div>
                         </div>
@@ -162,7 +156,7 @@
         </div>
 
         <div>
-            <a id="skills"></a>
+            <a id="skills" class="link-a"></a>
             <p class="header">Skills</p>
             <p style="text-align: center;">What I have worked with while developing games/software</p>
             <div style="text-align:center">
@@ -202,7 +196,7 @@
             </div>
         </div>
         <div id="non-technical" style="border-top: 2px solid #174166;">
-            <a id="non-code"></a>
+            <a id="non-code" class="link-a"></a>
             <p class="header">Non-Code</p>
             <p>I like to dip my toe into the waters of different creative fields to get a sense of the time and effort needed, and the workflow. Here are some works I've created:</p>
             <div style="text-align:center">
@@ -234,17 +228,17 @@
     </div>
     
     <div id="info-bar">
-        <a id="contact"></a>
+        <a id="contact" class="link-a"></a>
         <div style="text-align:center">
             <div class="inline" style="text-align:left">
                 <p style="font-size: 2em;">Contact</p>
-                <img src="media/352510_local_phone_icon.svg" width="48" height="48" style="vertical-align: middle;"> <span>text: (226)-268-5095</span><br><br>
-                <img src="media/1814108_email_envenlope_letter_mail_icon.svg" width="48" height="48" style="vertical-align: middle;"> <span><a class="hov-highlight" href="mailto:contact@jamesnicko.li">contact@jamesnicko.li</a></span><br>
+                <img class="ignore-anim" src="media/352510_local_phone_icon.svg" width="48" height="48" style="vertical-align: middle;"> <span>text: (226)-268-5095</span><br><br>
+                <img class="ignore-anim" src="media/1814108_email_envenlope_letter_mail_icon.svg" width="48" height="48" style="vertical-align: middle;"> <span><a class="hov-highlight" href="mailto:contact@jamesnicko.li">contact@jamesnicko.li</a></span><br>
             </div>
             <div class="inline" style="text-align:left">
                 <p style="font-size: 2em;">Social</p>
-                <img src="media/GitHub-Mark-Light-32px.png" style="vertical-align: middle;"> <span><a class="hov-highlight" href="https://github.com/rsninja722">github.com/rsninja722</a></span><br><br>
-                <img src="media/web.png" style="vertical-align: middle;" width="32" height="32"> <span><a class="hov-highlight" href="https://rsninja.dev">rsninja.dev</a></span>
+                <img class="ignore-anim" src="media/GitHub-Mark-Light-32px.png" style="vertical-align: middle;"> <span><a class="hov-highlight" href="https://github.com/rsninja722">github.com/rsninja722</a></span><br><br>
+                <img class="ignore-anim" src="media/web.png" style="vertical-align: middle;" width="32" height="32"> <span><a class="hov-highlight" href="https://rsninja.dev">rsninja.dev</a></span>
             </div>
     </div>
 
