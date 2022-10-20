@@ -10,27 +10,84 @@
     <script src="scripts/splide.min.js"></script>
 </head>
 <body>
-    <div id="hamburger-button" onclick="show()" style="cursor: pointer;">
+    <!-- <div id="nav">
+            <div class="toggle-btn" onclick="toggleMenu()">
+                <span id="navTop"></span>
+                <span id="navMid"></span>
+                <span id="navBot"></span>
+            </div>
+            <a href="#top"><div><span>Top</span></div></a>
+            <a href="#about"><div><span>About</span></div></a>
+            <a href="#projects"><div><span>Projects</span></div></a>
+            <a href="#skills"><div><span>Skills</span></div></a>
+            <a href="#non-code"><div><span>Non-Code</span></div></a>
+            <a href="#contact"><div id="contact-link"><span>Contact</span></div></a>
+    </div> -->
+
+    <input type="checkbox" id="toggle" name="toggle">
+
+    <ul class="navigation-menu">
+        <li><a href="#top"><div><span>Top</span></div></a></li>
+        <li><a href="#about"><div><span>About</span></div></a></li>
+        <li><a href="#projects"><div><span>Projects</span></div></a></li>
+        <li><a href="#skills"><div><span>Skills</span></div></a></li>
+        <li><a href="#non-code"><div><span>Non-Code</span></div></a></li>
+        <li id="contact-link"><a href="#contact"><div><span>Contact</span></div></a></li>
+    </ul>
+
+    <div class="navbar">
+    <label for="toggle" id="toggle-hamburger">
+        <span id="navTop"></span>
+        <span id="navMid"></span>
+        <span id="navBot"></span>
+    </label>
+    </div>
+
+    <!-- <div id="hamburger-button" onclick="show()" style="cursor: pointer;">
         <div id="hamburger"></div>
     </div>
     <div id="top-nav">
         <a onclick="hide()"><div style="cursor: pointer;"><span style="color: #ffbebe;font-family: consolas;">X</span></div></a>
-        <a href="#top"><div><span>Top</span></div></a>
-        <a href="#about"><div><span>About</span></div></a>
-        <a href="#projects"><div><span>Projects</span></div></a>
-        <a href="#skills"><div><span>Skills</span></div></a>
-        <a href="#non-code"><div><span>Non-Code</span></div></a>
-        <a href="#contact"><div id="contact-link"><span>Contact</span></div></a>
-    </div>
+        
+    </div> -->
     <div id="main">
         <a id="top"></a>
         <div class="back2" style="padding-top: 2em;padding-bottom: 1em;border-bottom: 2px solid #174166;">
-            <p class="title">James Nickoli</p>
+            <p class="title">Test</p>
             <p class="sub-title" style="border: none;">Software Developer</p>
         </div>
         <a id="about"></a>
         <p class="header">About Me</p>
         <p style="padding-left: 2em;padding-right: 2em;">I'm currently a computer science student at McMaster University in Ontario. I've always had a drive to develop my programming and collaboration abilities. From competing with my <a href="https://www.raiderrobotics.org/">robotics team</a> in high school, to training as a member of the <a href="https://mcp-team.com/">McMaster Competitive Programming</a> team, I'm always learning and challenging myself. I also love to develop little programs that speed up my workflow, as well as video games.</p>
+        <div class="back2" style="border-top: 2px solid #174166;padding: 0 0 1em 0;">
+            <a id="experience"></a>
+            <p class="header">Experience</p>
+
+            <div class="timeline">
+                <div class="container left">
+                    <div class="content">
+                        <div><img src="media/BVGLogo.png" style="padding-right: 0.5em;width: 4em;"></div>
+                        <div><span>Big Viking Games</span><span style="color: #b8c8da;"> 2022</span></div>
+                        <div style="grid-column-end: span 2;"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas expedita maiores ex consequatur atque eius perspiciatis, harum explicabo eveniet porro facere laboriosam nostrum necessitatibus. Quod animi harum debitis enim voluptatibus!</p></div>
+                    </div>
+                </div>
+                <div class="container right">
+                    <div class="content">
+                        <div><img src="media/MCPLogo.png" style="padding-right: 0.5em;width: 4em;"></div>
+                        <div><span>McMaster Competitive Programming</span><span style="color: #b8c8da;"> 2022</span></div>
+                        <div style="grid-column-end: span 2;"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas expedita maiores ex consequatur atque eius perspiciatis, harum explicabo eveniet porro facere laboriosam nostrum necessitatibus. Quod animi harum debitis enim voluptatibus!</p></div>
+                    </div>
+                </div>
+                <div class="container left">
+                    <div class="content">
+                        <div><img src="media/robotics.png" style="padding-right: 0.5em;width: 4em;"></div>
+                        <div><span>FRC team 5024</span><span style="color: #b8c8da;"> 2017-2020</span></div>
+                        <div style="grid-column-end: span 2;"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas expedita maiores ex consequatur atque eius perspiciatis, harum explicabo eveniet porro facere laboriosam nostrum necessitatibus. Quod animi harum debitis enim voluptatibus!</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div style="border-top: 2px solid #174166;padding: 0 0 0 0;">
             <a id="projects"></a>
             <p class="header">Projects</p>

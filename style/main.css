@@ -1,7 +1,7 @@
 html {
     background-color: #ffffff;
     color: #44668d;
-    font-family: Georgia,Times,Times New Roman,serif;
+    font-family: Georgia, Times, Times New Roman, serif;
 }
 
 body {
@@ -13,9 +13,13 @@ a {
     color: #2fa1da;
 }
 
-a:hover { 
-    color: #92dbff; 
-} 
+a:hover {
+    color: #92dbff;
+}
+
+img {
+    user-select: none;
+}
 
 ul {
     font-size: 1.2em;
@@ -40,14 +44,29 @@ ul {
 }
 
 html {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
+    html {
+        scroll-behavior: auto;
+    }
 }
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: none;
+    }
+    100% {
+        transform: none;
+    }
+}
+
+div {  
+    /* This section calls the slideInFromLeft animation we defined above */
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
 .dash-list {
     list-style-type: "-";
     padding-inline-start: 1em;
@@ -59,12 +78,12 @@ html {
     margin: 0 0 0 1em;
     padding-top: 1em;
     padding-bottom: 1em;
-    color: #0b5394; 
+    color: #0b5394;
 }
- 
+
 .header-small {
     font-size: 1.5em !important;
-} 
+}
 
 .title {
     font-weight: bold;
@@ -73,7 +92,7 @@ html {
     font-size: 4em !important;
     margin-top: 0;
     margin-bottom: 0.25em;
-    color: #0b5394; 
+    color: #0b5394;
 }
 
 .sub-title {
@@ -81,7 +100,7 @@ html {
     text-align: center;
     font-size: 2em !important;
     margin-top: 0.5em;
-    color: #0b5394; 
+    color: #0b5394;
 }
 
 .splide {
@@ -109,6 +128,7 @@ html {
     width: 32px;
     background-color: #174166cc;
 }
+
 #hamburger-button:hover {
     background-color: #174166;
 }
@@ -136,7 +156,7 @@ html {
 }
 
 #top-nav div:hover {
-    background-color: #174166;   
+    background-color: #174166;
     color: #ffffff;
 }
 
@@ -156,14 +176,14 @@ html {
     #top-nav span {
         line-height: 2em;
     }
-    
+
     #top-nav div {
         display: inline-block;
         height: 100%;
     }
 }
 
-#main > div {
+#main>div {
     padding-left: 2em;
     padding-right: 2em;
 }
@@ -188,38 +208,153 @@ html {
     padding-right: 2em;
 }
 
-#hamburger {
-    top: 14px;
-    left: 6px;
+/*
+#nav {
+    position: fixed;
+    top: 0;
+    left: -9em;
+    width: 8em;
+    transition: left 0.3s ease-in-out;
+    box-shadow: 3px 0px 1px -2px rgb(0 0 0 / 40%), 2px 0px 2px 0px rgb(0 0 0 / 30%), 1px 0px 5px 0px rgb(0 0 0 / 25%);
+    backdrop-filter: blur(6px);
+    background-color: #ffffff77;
+    overflow-wrap: break-word;
 }
 
-#hamburger,
-#hamburger::before,
-#hamburger::after {
-    display: block;
-    background-color: #ffffff;
+#nav .toggle-btn {
     position: absolute;
-    height: 3px;
-    width: 20px;
+    top: 2px;
+    left: 9.5em;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    margin: 0;
+}
+
+#nav div {
+    margin-left: 1em;
+}
+
+.toggle-btn span {
+    width: 25px;
+    height: 4px;
     border-radius: 2px;
+    background: #174166;
+    display: block;
+    margin-top: 3px;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 40%), 0px 2px 2px 0px rgb(0 0 0 / 30%), 0px 1px 5px 0px rgb(0 0 0 / 25%);
 }
 
-#hamburger::before {
-    content: '';
-    margin-top: -6px;
+#nav.active {
+    left: 0;
 }
 
-#hamburger::after {
-    content: '';
-    margin-top: 6px;
+#navTop.active {
+    transform: rotate(45deg);
+    top: 8px;
 }
+
+#navBot.active {
+    transform: rotate(-45deg);
+    top: -8px;
+}
+
+#navMid.active {
+    opacity: 0;
+} */
+
+#toggle-hamburger {
+    position: fixed;
+    top: 2px;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    margin: 0;
+}
+
+#toggle-hamburger span {
+    width: 25px;
+    height: 4px;
+    border-radius: 2px;
+    background: #174166;
+    display: block;
+    margin-top: 3px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.navigation-menu {
+    height: 100%;
+    list-style: none;
+    text-align: center;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: -9em;
+    width: 8em;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    backdrop-filter: blur(6px);
+    background-color: #ffffff77;
+    overflow-wrap: break-word;
+    user-select: none;
+}
+
+
+.navigation-menu li:nth-of-type(2n) {
+    background: #dddddd77;
+}
+
+.navigation-menu li:hover {
+    background: #bbbbbb77;
+}
+
+.navigation-menu a {
+    color: #2fa1da;
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s;
+    padding: 0.5em 0 0.5em 0;
+}
+
+.navbar {
+    position: fixed;
+    top: 2px;
+    left: 2px;
+    transition: left 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Hide the checkbox */
+#toggle {
+    display: none;
+}
+
+/* Use this label to toggle the sliding menu */
+label[for="toggle"] {
+    cursor: pointer;
+}
+
+/* Slide menu when checkbox is checked */
+input#toggle:checked+ul.navigation-menu {
+    left: 0;
+}
+
+/* Also slide content when checkbox is checked */
+input#toggle:checked~.content {
+    left: -45%;
+}
+
+input#toggle:checked~.navbar {
+    left: 10em;
+}
+
+
+
+
 
 @media (min-width: 1000px) {
     #info-bar {
         position: fixed;
         right: 0px;
         top: 0px;
-        width:15em;
+        width: 15em;
         height: 100%;
     }
 
@@ -248,5 +383,142 @@ html {
 
     li img {
         width: 100%;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+.timeline {
+    position: relative;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #44668d;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 40%;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: white;
+    border: 4px solid #44668d;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.left {
+    left: 10%;
+}
+
+.right {
+    left: 50%;
+}
+
+.left > .content::before {
+    content: " ";
+    height: 16px;
+    position: absolute;
+    top: 22px;
+    width: 16px;
+    z-index: 1;
+    right: -8px;
+    transform: rotate(45deg);
+    background-color: #ffffff;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+    clip-path: polygon(0px 0px, 0px 0px, 30px 0px, 30px 30px);
+}
+
+.right > .content::before {
+    content: " ";
+    height: 16px;
+    position: absolute;
+    top: 22px;
+    width: 16px;
+    z-index: 1;
+    left: -8px;
+    transform: rotate(225deg);
+    background-color: #ffffff;
+    box-shadow: -3px 0px 6px rgb(0 0 0 / 16%), -3px 0px 6px rgb(0 0 0 / 23%);
+    clip-path: polygon(-10px -10px, -10px -10px, 30px -10px, 30px 30px);
+}
+
+.right::after {
+    left: -16px;
+}
+
+.content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    display: grid;
+    grid-template-columns: 4em 1fr;
+    transition: all ease-in-out 0.3s;
+}
+
+
+.content:hover {
+    transform: translateY(-10px);
+}
+
+
+@media screen and (max-width: 900px) {
+    .timeline::after {
+        left: 31px;
+    }
+
+    .container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .container::before {
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+    }
+
+    .left::after,
+    .right::after {
+        left: 15px;
+    }
+
+    .right {
+        left: 0%;
+    }
+
+    .left {
+        left: 0%;
+    }
+
+    .left > .content::before {
+        left: -8px;
+        transform: rotate(225deg);
+        box-shadow: -3px 0px 6px rgb(0 0 0 / 16%), -3px 0px 6px rgb(0 0 0 / 23%);
+        clip-path: polygon(-10px -10px, -10px -10px, 30px -10px, 30px 30px);
     }
 }
