@@ -82,76 +82,85 @@
             </div>
         </div>
         
-        <div style="border-top: 2px solid #174166;padding: 0 0 0 0;">
-            <a id="projects" class="link-a"></a>
-            <p class="header">Projects</p>
-            <div id="proj1" class="back2" style="padding-bottom: 4em;">
-                <p style="display: inline-block;" class="header header-small">Junk Escape</p><a style="display: inline-block;" href="https://rsninja.dev/games/junkEscape"><img src="media/2639850_link_icon.svg" width="20"></a>
-                <ul>
-                    <li class="dash-list">Javascript</li>
-                    <li class="dash-list">Worked with an artist</li>
-                    <li class="dash-list">Game Jam entry</li>
-                    <li class="dash-list">1 week development time</li>
-                </ul>
-                <p style="padding-left: 2em;padding-right: 2em;">Junk Escape is a game I developed in 1 week for the <a href="https://itch.io/jam/cgj">Community Game Jam</a>. I collaborated with a dedicated <a href="https://kondroel.artstation.com/">artist</a> who worked off of my designs for levels, enemies, and character parts. Everything from asset loading, to audio management, to the camera system was done in pure JS (as a way to learn, I have nothing against using libraries or engines). You can play it <a href="https://rsninja.dev/games/junkEscape">on my website</a></p>
-                <div style="text-align:center">
-                    <div class="inline">
-                        <p>Gameplay</p>
-                        <!-- https://www.youtube.com/embed/dJG3LaP8JH4?autoplay=1&mute=1 -->
-                        <iframe class="shadow" id="video-player" width="640" height="480" src="https://www.youtube-nocookie.com/embed/dJG3LaP8JH4?autoplay=1&mute=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="inline">
-                        <p>Screenshots</p>
-                        <div class="splide shadow">
-                            <div class="splide__track">
-                                <ul class="splide__list">
-                                    <li class="splide__slide ignore-anim"><img src="media/JunkEscape1.PNG" class="ignore-anim"></li>
-                                    <li class="splide__slide ignore-anim"><img src="media/JunkEscape2.PNG" class="ignore-anim"></li>
-                                    <li class="splide__slide ignore-anim"><img src="media/JunkEscape3.PNG" class="ignore-anim"></li>
-                                    <li class="splide__slide ignore-anim"><img src="media/JunkEscape4.PNG" class="ignore-anim"></li>
-                                </ul>
+        <p class="header" id="projects">Projects</p>
+        <p class="header" id="scroll-down">\/</p>
+        <p class="header" id="scroll-down">\/</p>
+
+        <div id="laptop-container">
+            <div id="laptop-case" class=".collapse-top-initial">
+                <div id="laptop">
+                    <div id="laptop-content" style="border-top: 2px solid #174166;padding: 0 0 0 0;">
+                        <a id="projects" class="link-a"></a>
+                        <div id="proj1" class="back2" style="padding-bottom: 4em;">
+                            <p style="display: inline-block;" class="header header-small">Junk Escape</p><a style="display: inline-block;" href="https://rsninja.dev/games/junkEscape"><img src="media/2639850_link_icon.svg" width="20"></a>
+                            <ul>
+                                <li class="dash-list">Javascript</li>
+                                <li class="dash-list">Worked with an artist</li>
+                                <li class="dash-list">Game Jam entry</li>
+                                <li class="dash-list">1 week development time</li>
+                            </ul>
+                            <p style="padding-left: 2em;padding-right: 2em;">Junk Escape is a game I developed in 1 week for the <a href="https://itch.io/jam/cgj">Community Game Jam</a>. I collaborated with a dedicated <a href="https://kondroel.artstation.com/">artist</a> who worked off of my designs for levels, enemies, and character parts. Everything from asset loading, to audio management, to the camera system was done in pure JS (as a way to learn, I have nothing against using libraries or engines). You can play it <a href="https://rsninja.dev/games/junkEscape">on my website</a></p>
+                            <div style="text-align:center">
+                                <div class="inline">
+                                    <p>Gameplay</p>
+                                    <!-- https://www.youtube.com/embed/dJG3LaP8JH4?autoplay=1&mute=1 -->
+                                    <iframe class="shadow" id="video-player" width="640" height="480" src="https://www.youtube-nocookie.com/embed/dJG3LaP8JH4?autoplay=1&mute=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                                <div class="inline">
+                                    <p>Screenshots</p>
+                                    <div class="splide shadow">
+                                        <div class="splide__track">
+                                            <ul class="splide__list">
+                                                <li class="splide__slide ignore-anim"><img src="media/JunkEscape1.PNG" class="ignore-anim"></li>
+                                                <li class="splide__slide ignore-anim"><img src="media/JunkEscape2.PNG" class="ignore-anim"></li>
+                                                <li class="splide__slide ignore-anim"><img src="media/JunkEscape3.PNG" class="ignore-anim"></li>
+                                                <li class="splide__slide ignore-anim"><img src="media/JunkEscape4.PNG" class="ignore-anim"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+
+
+                        <div id="proj2" style="padding-bottom: 4em;">
+                            <p style="display: inline-block;" class="header header-small">GameJ</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
+                            <ul>
+                                <li class="dash-list">Java</li>
+                                <li class="dash-list">Multithreading</li>
+                                <li class="dash-list">Hardware accelerated graphics</li>
+                                <li class="dash-list">Documentation</li>
+                            </ul>
+                            <p style="padding-left: 2em;padding-right: 2em;">GameJ is a game engine I developed slowly over the course of a year. It features separate update and rendering threads, GPU rendering, asset loading, a camera system, input handling, a debug system, and collision detection. I made it one of my goals to clearly organize and comment my code, as well as create <a href="https://rsninja.dev/gamej/">documentation</a> for the code base.</p>
+                        </div>
+
+                        <div id="proj3" class="back2" style="padding-bottom: 4em;">
+                            <p style="display: inline-block;" class="header header-small">Master Mind</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
+                            <ul>
+                                <li class="dash-list">Java</li>
+                                <li class="dash-list">Multiplayer</li>
+                                <li class="dash-list">Pair Programming</li>
+                            </ul>
+                            <p style="padding-left: 2em;padding-right: 2em;">A multiplayer version of the classic Mastermind board game made with Netty for networking and GameJ for the interface. The <a href="https://github.com/rsninja722/MasterMindServer">server</a> portion was programmed together with my friend, and then we created our separate clients that connected. <a href="https://www.youtube.com/watch?v=EvB82nGISPg">This video</a> shows a game played with my client (left) and my friends client (right).</p>
+                            <div style="text-align:center">
+                                <div class="inline">
+                                    <p>Game Client</p>
+                                    <img src="media/mastermind.png" style="max-width: 70%;" class="shadow">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="proj4" style="padding-bottom: 4em;border-bottom: 2px solid #174166;">
+                            <p style="display: inline-block;" class="header header-small">Public Website</p><a style="display: inline-block;" href="https://rsninja.dev"><img src="media/2639850_link_icon.svg" width="20"></a>
+                            <ul>
+                                <li class="dash-list">Javascript/HTML/CSS</li>
+                                <li class="dash-list">long term maintenance</li>
+                            </ul>
+                            <p style="padding-left: 2em;padding-right: 2em;">My <a href="https://rsninja.dev">public website</a> (under my online pseudonym rsninja dev), hosts all my playable web game, blog, photography gallery, and other projects. I've maintained, changed, and added onto my website for over 4 years. Through this I've learned to actively find old code that breaks because of new changes.</p>
+                            <img src="media/website.PNG" style="max-width: 100%;" class="shadow">
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-            <div id="proj2" style="padding-bottom: 4em;">
-                <p style="display: inline-block;" class="header header-small">GameJ</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
-                <ul>
-                    <li class="dash-list">Java</li>
-                    <li class="dash-list">Multithreading</li>
-                    <li class="dash-list">Hardware accelerated graphics</li>
-                    <li class="dash-list">Documentation</li>
-                </ul>
-                <p style="padding-left: 2em;padding-right: 2em;">GameJ is a game engine I developed slowly over the course of a year. It features separate update and rendering threads, GPU rendering, asset loading, a camera system, input handling, a debug system, and collision detection. I made it one of my goals to clearly organize and comment my code, as well as create <a href="https://rsninja.dev/gamej/">documentation</a> for the code base.</p>
-            </div>
-
-            <div id="proj3" class="back2" style="padding-bottom: 4em;">
-                <p style="display: inline-block;" class="header header-small">Master Mind</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
-                <ul>
-                    <li class="dash-list">Java</li>
-                    <li class="dash-list">Multiplayer</li>
-                    <li class="dash-list">Pair Programming</li>
-                </ul>
-                <p style="padding-left: 2em;padding-right: 2em;">A multiplayer version of the classic Mastermind board game made with Netty for networking and GameJ for the interface. The <a href="https://github.com/rsninja722/MasterMindServer">server</a> portion was programmed together with my friend, and then we created our separate clients that connected. <a href="https://www.youtube.com/watch?v=EvB82nGISPg">This video</a> shows a game played with my client (left) and my friends client (right).</p>
-                <div style="text-align:center">
-                    <div class="inline">
-                        <p>Game Client</p>
-                        <img src="media/mastermind.png" style="max-width: 70%;" class="shadow">
-                    </div>
-                </div>
-            </div>
-
-            <div id="proj4" style="padding-bottom: 4em;border-bottom: 2px solid #174166;">
-                <p style="display: inline-block;" class="header header-small">Public Website</p><a style="display: inline-block;" href="https://rsninja.dev"><img src="media/2639850_link_icon.svg" width="20"></a>
-                <ul>
-                    <li class="dash-list">Javascript/HTML/CSS</li>
-                    <li class="dash-list">long term maintenance</li>
-                </ul>
-                <p style="padding-left: 2em;padding-right: 2em;">My <a href="https://rsninja.dev">public website</a> (under my online pseudonym rsninja dev), hosts all my playable web game, blog, photography gallery, and other projects. I've maintained, changed, and added onto my website for over 4 years. Through this I've learned to actively find old code that breaks because of new changes.</p>
-                <img src="media/website.PNG" style="max-width: 100%;" class="shadow">
             </div>
         </div>
 
