@@ -276,6 +276,22 @@ span > span {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
+#fancy-background {
+    position: fixed;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+#fancy-background-blur {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+}
+
 #projects {
     text-align: center;
 }
@@ -288,7 +304,7 @@ span > span {
 
 #laptop-container {
     height: 100%;
-    transition: 900ms;
+    transition: 700ms;
     position: relative;
     top: -16em;
 }
@@ -298,13 +314,13 @@ span > span {
 }
 
 #laptop {
-    height: 80vh;
+    height: 90vh;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     -webkit-transform-origin: 50% 100%;
     transform-origin: 50% 100%;
     transition: 900ms;
-    border: 1.5em solid #d7dbde;
+    border: 1.5em solid #748591;
     background-color: #ffffff;
     border-radius: 2em 2em 0.5em 0.5em;
     overflow-y: scroll;
@@ -312,17 +328,6 @@ span > span {
     width: fit-content;
 }
 
-#laptop::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-    background-color: #000000;
-    border: 0.25em solid #666666;
-}
 
 #laptop-case {
     position: -webkit-sticky;
@@ -336,24 +341,57 @@ span > span {
     transform-origin: 50% 0;
     width: 100%;
     height: 2vh;
-    background-color: #d7dbde;
+    background-color: #748591;
     border-radius: 1em 1em 0.5em 0.5em;
     content: " ";
     position: absolute;
-    border-bottom: 2px solid #9a99a0;
-    border-top: 4px solid #ececec;
-    top: 78vh;
+    border-bottom: 1vh solid #3c394d;
+    border-top: 4px solid #c1c1c1;
+    top: 87vh;
 }
 
 #laptop-case::after {
     width: 100%;
     height: 2vh;
-    background-color: #d7dbde;
+    background-color: #748591;
     border-radius: 0.5em 0.5em 2em 2em;
     content: " ";
     position: absolute;
-    border-top: 2px solid #9a99a0;
-    border-bottom: 4px solid #9a99a0;
+    border-top: 2px solid #c1c1c1;
+    border-bottom: 4px solid #c1c1c1;
+}
+
+#laptop-style {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    transition: 900ms;
+}
+
+#laptop-style::after {
+    width: 95%;
+    left: 2.5%;
+    height: 0;
+    background-color: #748591;
+    content: " ";
+    position: absolute;
+    border-top: 1.5em dashed #43424b;
+    top: 89.25vh;
+    transform: none;
+}
+
+#laptop-style::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: #000000;
+    border: 0.25em solid #868d8d;
+    z-index: 1;
 }
 
 .collapse {
@@ -362,6 +400,10 @@ span > span {
 
 .collapse-top-initial::before  {
     transform: scaleY(0);
+}
+
+.collapse-top::before {
+    transform: scaleY(1);
 }
 
 .collapse-top::before {
@@ -482,6 +524,7 @@ input#toggle:checked~.navbar {
 .timeline {
     position: relative;
     margin: 0 auto;
+    z-index: 10;
 }
 
 .timeline::after {
