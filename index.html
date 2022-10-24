@@ -2,7 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <meta content="James Nickoli" name=title>
+    <meta content="Software and Game Developer - Portfolio website" name=description>
+    <meta content="software developer, co-op, programming, James Nickoli" name=keywords>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="James Nickoli" property=og:title>
+    <meta content="image/png" property=og:image:type>
+    <meta content="jamesnicko.li" property=og:site_name>
+    <meta content="https://jamesnicko.li" property=og:url>
+    <meta content="Software and Game Developer - Portfolio website"property=og:description>
+
     <title>James Nickoli</title>
     <link rel="icon" type="image/gif" href="media/favicon.ico"/>
     <link rel="stylesheet" href="style/main.css">
@@ -22,7 +32,7 @@
         <li><a href="#experience"><div><span>Experience</span></div></a></li>
         <li><a href="#projects"><div><span>Projects</span></div></a></li>
         <li><a href="#skills"><div><span>Skills</span></div></a></li>
-        <li><a href="#non-code"><div><span>Non-Code</span></div></a></li>
+        <li><a href="#non-code"><div><span>Hobbies</span></div></a></li>
         <li id="contact-link"><a href="#contact"><div><span>Contact</span></div></a></li>
     </ul>
 
@@ -41,7 +51,7 @@
         </div>
         <a id="about" class="link-a"></a>
         <p class="header">About Me</p>
-        <p style="padding-left: 2em;padding-right: 2em;">I'm currently a computer science student at McMaster University in Ontario. I've always had a drive to develop my programming and collaboration abilities. From competing with my <a href="https://www.raiderrobotics.org/">robotics team</a> in high school, to training as a member of the <a href="https://mcp-team.com/">McMaster Competitive Programming</a> team, I'm always learning and challenging myself. I also love to develop little programs that speed up my workflow, as well as video games.</p>
+        <p style="padding-left: 2em;padding-right: 2em;">I'm currently a computer science student at McMaster University in Ontario. I've always had a drive to develop my programming and collaboration abilities. From competing with my <a href="https://www.raiderrobotics.org/">robotics team</a> in high school, to training as a member of the <a href="https://mcp-team.com/">McMaster Competitive Programming</a> team, I'm always learning and challenging myself. I also love developing video games and participating in game jams.</p>
         <div class="back2" style="border-top: 2px solid #174166;padding: 0 0 1em 0;">
             <a id="experience" class="link-a"></a>
             <p class="header">Experience</p>
@@ -49,23 +59,39 @@
             <div class="timeline">
                 <div class="container left">
                     <div class="content">
-                        <div><img src="media/BVGLogo.png" style="padding-right: 0.5em;width: 4em;"></div>
-                        <div><span>Big Viking Games&emsp;<span style="color: #b8c8da;">2022</span></span></div>
-                        <div style="grid-column-end: span 2;"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas expedita maiores ex consequatur atque eius perspiciatis, harum explicabo eveniet porro facere laboriosam nostrum necessitatibus. Quod animi harum debitis enim voluptatibus!</p></div>
+                        <div><img src="media/BVGLogo.png" style="padding-right: 0.5em;width: 4em;margin: 0;"></div>
+                        <div><span>Big Viking Games&emsp;<span style="color: #97a1ac;">2022</span></span><br><span style="color: #97a1ac;">CO-OP Software Developer</span></div>
+                        <div style="grid-column-end: span 2;">
+                            <ul>
+                                <li>Increased the efficiency of internal game maintenance and moderation by updating old administrative tools and creating new ones for tedious tasks</li>
+                                <li>Improved quality of life for the thousands of daily active users by adding requested features to the in game social systems</li>
+                                <li>Strengthened player connection by discovering the cause of long standing disconnect and loading issues</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="container right">
                     <div class="content">
-                        <div><img src="media/MCPLogo.png" style="padding-right: 0.5em;width: 4em;"></div>
-                        <div><span>McMaster Competitive Programming&emsp;<span style="color: #b8c8da;">2022</span></span></div>
-                        <div style="grid-column-end: span 2;"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas expedita maiores ex consequatur atque eius perspiciatis, harum explicabo eveniet porro facere laboriosam nostrum necessitatibus. Quod animi harum debitis enim voluptatibus!</p></div>
+                        <div><img src="media/MCPLogo.png" style="padding-right: 0.5em;width: 4em;margin: 0;"></div>
+                        <div><span>McMaster Competitive Programming&emsp;<span style="color: #97a1ac;">2022</span></span></div>
+                        <div style="grid-column-end: span 2;">
+                            <ul>
+                                <li>Represented McMaster in the International Collegiate Programming Contest as one of 9 members who qualified in team tryouts</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="container left">
                     <div class="content">
-                        <div><img src="media/robotics.png" style="padding-right: 0.5em;width: 4em;"></div>
-                        <div><span>FRC team 5024&emsp;<span style="color: #b8c8da;">2017-2020</span></span></div>
-                        <div style="grid-column-end: span 2;"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas expedita maiores ex consequatur atque eius perspiciatis, harum explicabo eveniet porro facere laboriosam nostrum necessitatibus. Quod animi harum debitis enim voluptatibus!</p></div>
+                        <div><img src="media/robotics.png" style="padding-right: 0.5em;width: 4em;margin: 0;"></div>
+                        <div><span>FRC team 5024&emsp;<span style="color: #97a1ac;">2017-2020</span></span><br><span style="color: #97a1ac;">Programming team member</span></div>
+                        <div style="grid-column-end: span 2;">
+                            <ul>
+                                <li>Used source control to create readable and reliable code as a team for a 120-pound robot while debugging software, firmware, and hardware within a 6 week development time frame</li>
+                                <li>Developed competition-ready robot code that helped lead us to be the #1 ranked team at the 2020 Humber College Event by working closely with build and drive team members</li>
+                                <li>Designed and implemented subsystem code that played a large role in the team receiving the Innovation in Control Award at the 2019 Ryerson University Event by using a limited set of sensors to fully achieve requested functionality</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,7 +108,7 @@
                         <div id="laptop-content" style="border-top: 2px solid #174166;padding: 0 0 0 0;margin: 10em 0 5em 0;">
                             <a id="projects" class="link-a"></a>
                             <div id="proj1" class="back2" style="padding-bottom: 4em;">
-                                <p style="display: inline-block;" class="header header-small">Junk Escape</p><a style="display: inline-block;" href="https://rsninja.dev/games/junkEscape"><img src="media/2639850_link_icon.svg" width="20"></a>
+                                <p style="display: inline-block;" class="header header-small">Junk Escape</p><a style="display: inline-block;" href="https://rsninja.dev/games/junkEscape"><img src="media/2639850_link_icon.svg" width="20" style="margin: 0;"></a>
                                 <ul>
                                     <li class="dash-list">Javascript</li>
                                     <li class="dash-list">Worked with an artist</li>
@@ -94,13 +120,13 @@
                                     <div class="inline">
                                         <p>Gameplay</p>
                                         <!-- https://www.youtube.com/embed/dJG3LaP8JH4?autoplay=1&mute=1 -->
-                                        <iframe class="shadow" id="video-player" width="640" height="480" src="https://www.youtube-nocookie.com/embed/dJG3LaP8JH4?autoplay=1&mute=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <iframe class="shadow" id="video-player" width="640" height="480" src="https://www.youtube-nocookie.com/embed/dJG3LaP8JH4?mute=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     </div>
                                     <div class="inline">
                                         <p>Screenshots</p>
-                                        <div class="splide shadow">
+                                        <div class="splide shadow show">
                                             <div class="splide__track">
-                                                <ul class="splide__list">
+                                                <ul class="splide__list block">
                                                     <li class="splide__slide ignore-anim"><img src="media/JunkEscape1.PNG" class="ignore-anim"></li>
                                                     <li class="splide__slide ignore-anim"><img src="media/JunkEscape2.PNG" class="ignore-anim"></li>
                                                     <li class="splide__slide ignore-anim"><img src="media/JunkEscape3.PNG" class="ignore-anim"></li>
@@ -114,7 +140,7 @@
 
 
                             <div id="proj2" style="padding-bottom: 4em;">
-                                <p style="display: inline-block;" class="header header-small">GameJ</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
+                                <p style="display: inline-block;" class="header header-small">GameJ</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20" style="margin: 0;"></a>
                                 <ul>
                                     <li class="dash-list">Java</li>
                                     <li class="dash-list">Multithreading</li>
@@ -125,7 +151,7 @@
                             </div>
 
                             <div id="proj3" class="back2" style="padding-bottom: 4em;">
-                                <p style="display: inline-block;" class="header header-small">Master Mind</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20"></a>
+                                <p style="display: inline-block;" class="header header-small">Master Mind</p><a style="display: inline-block;" href="https://github.com/rsninja722/MasterMind"><img src="media/2639850_link_icon.svg" width="20" style="margin: 0;"></a>
                                 <ul>
                                     <li class="dash-list">Java</li>
                                     <li class="dash-list">Multiplayer</li>
@@ -141,13 +167,13 @@
                             </div>
 
                             <div id="proj4" style="padding-bottom: 4em;border-bottom: 2px solid #174166;">
-                                <p style="display: inline-block;" class="header header-small">Public Website</p><a style="display: inline-block;" href="https://rsninja.dev"><img src="media/2639850_link_icon.svg" width="20"></a>
+                                <p style="display: inline-block;" class="header header-small">Public Website</p><a style="display: inline-block;" href="https://rsninja.dev"><img src="media/2639850_link_icon.svg" width="20" style="margin: 0;"></a>
                                 <ul>
                                     <li class="dash-list">Javascript/HTML/CSS</li>
                                     <li class="dash-list">long term maintenance</li>
                                 </ul>
                                 <p style="padding-left: 2em;padding-right: 2em;">My <a href="https://rsninja.dev">public website</a> (under my online pseudonym rsninja dev), hosts all my playable web game, blog, photography gallery, and other projects. I've maintained, changed, and added onto my website for over 4 years. Through this I've learned to actively find old code that breaks because of new changes.</p>
-                                <img src="media/website.PNG" style="max-width: 100%;" class="shadow">
+                                <img src="media/website.PNG" style="max-width: 96%;margin-left: 2%;margin-right: 2%;" class="shadow">
                             </div>
                         </div>
                     </div>
@@ -158,24 +184,43 @@
         <div>
             <a id="skills" class="link-a"></a>
             <p class="header">Skills</p>
-            <p style="text-align: center;">What I have worked with while developing games/software</p>
+            <p style="text-align: center;">What I have worked with while developing software/games</p>
             <div style="text-align:center">
                 <div class="inline">
                     <p>Languages</p>
-                    <ul style="padding-inline-start: 0.5em;">
+                    <ul style="padding-inline-start: 1em;">
                         <li class="dash-list">Javascript</li>
-                        <li class="dash-list">Java</li>
+                        <li class="dash-list">HTML</li>
+                        <li class="dash-list">CSS</li>
                         <li class="dash-list">Python</li>
-                        <li class="dash-list">c/c++</li>
-                        <li class="dash-list">c#</li>
+                        <li class="dash-list">Java</li>
+                        <li class="dash-list">C/C++</li>
                         <li class="dash-list">Haskell</li>
-                        <li class="dash-list">Elm</li>
-                        <li class="dash-list">HTML/CSS</li>
+                        <li class="dash-list">SQL</li>
+                    </ul>
+                </div>
+                <div class="inline">
+                    <p>Frameworks/Libraries</p>
+                    <ul style="padding-inline-start: 1em;">
+                        <li class="dash-list">React</li>
+                        <li class="dash-list">Node.js</li>
+                        <li class="dash-list">Raylib</li>
+                        <li class="dash-list">MongoDB</li>
+                    </ul>
+                </div>
+                <div class="inline">
+                    <p>Tools</p>
+                    <ul style="padding-inline-start: 1em;">
+                        <li class="dash-list">Git</li>                        
+                        <li class="dash-list">Github</li>                        
+                        <li class="dash-list">Docker</li>                        
+                        <li class="dash-list">Linux</li>                        
+                        <li class="dash-list">Jira</li>                      
                     </ul>
                 </div>
                 <div class="inline">
                     <p>Software</p>
-                    <ul style="padding-inline-start: 0.5em;">
+                    <ul style="padding-inline-start: 1em;">
                         <li class="dash-list">Audacity</li>
                         <li class="dash-list">Blender</li>
                         <li class="dash-list">Davinci Resolve</li>
@@ -184,27 +229,21 @@
                         <li class="dash-list">Unity</li>
                     </ul>
                 </div>
-                <div class="inline">
-                    <p>Technologies</p>
-                    <ul style="padding-inline-start: 0.5em;">
-                        <li class="dash-list">Node.js</li>
-                        <li class="dash-list">SQLite</li>
-                        <li class="dash-list">Git</li>
-                        <li class="dash-list">Github</li>
-                    </ul>
-                </div>
             </div>
         </div>
+
         <div id="non-technical" style="border-top: 2px solid #174166;">
             <a id="non-code" class="link-a"></a>
-            <p class="header">Non-Code</p>
-            <p>I like to dip my toe into the waters of different creative fields to get a sense of the time and effort needed, and the workflow. Here are some works I've created:</p>
+            <p class="header">Hobbies</p>
+            <p>In addition to enjoying hobbies in different creative fields, I also believe that getting a sense of the workflow, time, and effort needed to accomplish tasks in other (mostly game related) fields allow me to more effectively work with those who are outside my real of expertise. Here are some works I've created:</p>
             <div style="text-align:center">
                 <div class="inline">
                     <p>Artwork</p>
                     <img src="media/pixel2.gif" style="width:275px;image-rendering: pixelated;image-rendering: -moz-crisp-edges;" class="shadow">
                     <br>
                     <img src="media/pixel1.png"style="image-rendering: pixelated;image-rendering: -moz-crisp-edges;" class="shadow">
+                    <br>
+                    <img src="media/cLogos.png"style="image-rendering: pixelated;image-rendering: -moz-crisp-edges;" class="shadow">
                 </div>
                 <div class="inline">
                     <p>Photography</p>
@@ -213,8 +252,13 @@
                     <a href="https://i.ibb.co/tLc9qm1/169.jpg"><img src="https://i.ibb.co/5KvPrMJ/169.jpg" style="max-width: 100%;" class="shadow"></a>
                 </div>
                 <div class="inline">
-                    <p>3D Modeling</p>
-                    <img src="media/3d.png" style="max-width: 100%;" class="shadow">
+                    <p>Music</p>
+                    <span>Background music I created for </span><br>
+                    <span>one of my game jam games </span><br>
+                    <audio controls> 
+                        <source src="media/sky.mp3" type="audio/mpeg">
+                        Your browser does not support mp3 audio
+                    </audio>
                 </div>
             </div>
         </div>

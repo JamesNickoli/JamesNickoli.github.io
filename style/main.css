@@ -19,10 +19,22 @@ a:hover {
 
 img {
     user-select: none;
+    margin: 1em;
+}
+
+img.ignore-anim {
+    margin: 0;
+}
+
+.show {
+    visibility: visible !important;
+}
+
+.block {
+    display: block !important;
 }
 
 ul {
-    font-size: 1.2em;
     text-align: left;
 }
 
@@ -325,7 +337,7 @@ span > span {
     border-radius: 2em 2em 0.5em 0.5em;
     overflow-y: scroll;
     top: 5vh;
-    width: fit-content;
+    align-content: center;
 }
 
 

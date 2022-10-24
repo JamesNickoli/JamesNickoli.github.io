@@ -32,39 +32,71 @@ document.body.onload = function () {
     addAnim(document.getElementsByClassName("splide")[0], "fade-up-anim");
     addAnim(document.getElementsByTagName("iframe")[0], "fade-up-anim");
 
+    
+    document.getElementsByClassName("splide")[0].classList.remove("show");
+    document.getElementsByClassName("splide__list")[0].classList.remove("block");
+
     new Splide(".splide", {
         width: "640px"
     }).mount();
 
-    document.getElementById("laptop-container").style.height = document.getElementById("laptop-content").offsetHeight + "px";
+    document.getElementById("laptop-container").style.height = (document.getElementById("laptop-content").offsetHeight+100)+ "px";
     document.getElementById("laptop").style.overflow = "hidden";
 
     document.getElementById("laptop-case").style.transform = "";
 
     let laptopOpen = false;
+    let target = 0;
+    let direction = "up";
+    let locked = false;
     document.getElementById("laptop-style").classList.add("collapse");
     document.getElementById("laptop-container").classList.add("laptop-container-move-up");
     document.getElementById("laptop-case").classList.remove("collapse-top-initial");
 
-    window.addEventListener("scroll", () => {
-            if((window.scrollY - document.getElementById("laptop-container").offsetTop) > 0) {
-                if(!laptopOpen) {
-                    document.getElementById("laptop-style").classList.remove("collapse");
-                    document.getElementById("laptop-case").classList.remove("collapse-top");
-                    document.getElementById("laptop-case").classList.add("collapse-top-initial");
-                    document.getElementById("laptop-container").classList.remove("laptop-container-move-up");
-                    laptopOpen = true;
+    [].forEach.call(document.getElementsByClassName("navigation-menu")[0].children, (e) => {
+        let link = e.children[0].href;
+        e.children[0].addEventListener("click", () => {
+            target = document.getElementById(link.split("#")[1]).offsetTop;
+            if(target > window.scrollY) {
+                direction = "down";
+            } else {
+                direction = "up";
+            }
+            locked = true;
+        });
+    });
+
+    window.addEventListener("scroll", (e) => {
+            if(locked) {
+                if(direction == "down") {
+                    if(window.scrollY >= target-10) {
+                        locked = false;
+                    }
+                } else {
+                    if(window.scrollY <= target+10) {
+                        locked = false;
+                    }
                 }
             } else {
-                if(laptopOpen) {
-                    document.getElementById("laptop-style").classList.add("collapse");
-                    document.getElementById("laptop-case").classList.add("collapse-top");
-                    document.getElementById("laptop-case").classList.remove("collapse-top-initial");
-                    document.getElementById("laptop-container").classList.add("laptop-container-move-up");
-                    laptopOpen = false;
+                if((window.scrollY - document.getElementById("laptop-container").offsetTop) > 0) {
+                    if(!laptopOpen) {
+                        document.getElementById("laptop-style").classList.remove("collapse");
+                        document.getElementById("laptop-case").classList.remove("collapse-top");
+                        document.getElementById("laptop-case").classList.add("collapse-top-initial");
+                        document.getElementById("laptop-container").classList.remove("laptop-container-move-up");
+                        laptopOpen = true;
+                    }
+                } else {
+                    if(laptopOpen) {
+                        document.getElementById("laptop-style").classList.add("collapse");
+                        document.getElementById("laptop-case").classList.add("collapse-top");
+                        document.getElementById("laptop-case").classList.remove("collapse-top-initial");
+                        document.getElementById("laptop-container").classList.add("laptop-container-move-up");
+                        laptopOpen = false;
+                    }
                 }
+                document.getElementById("laptop").scrollTop = window.scrollY - document.getElementById("laptop-container").offsetTop;
             }
-            document.getElementById("laptop").scrollTop = window.scrollY - document.getElementById("laptop-container").offsetTop;
         },
         false
     );
@@ -88,12 +120,24 @@ document.body.onload = function () {
             fallingChars.push([random(0, ~~(canvas.width/scale)) * scale, 0]);
         }
 
-        for(var i of fallingChars) {
-            chars.push([i[0], i[1], 0, order[(~~(i[1]+i[0] / scale)) % order.length]]);
-            i[1] += scale;
+        if(fallingChars.length > 500) {
+            fallingChars.splice(500, fallingChars.length - 500);
+        }
+        if(chars.length > 500) {
+            chars.splice(500, chars.length - 500);
         }
 
-        for(var i=0;i<chars.length;i++) {
+        for(let i=0;i<fallingChars.length;i++) {
+            let f = fallingChars[i];
+            chars.push([f[0], f[1], 0, order[(~~(f[1]+f[0] / scale)) % order.length]]);
+            f[1] += scale;
+
+            if(f[1] > canvas.height) {
+                fallingChars.splice(i, 1);
+            }
+        }
+
+        for(let i=0;i<chars.length;i++) {
             if(++chars[i][2] > canvas.height/(scale*1.5)) {
                 chars.splice(i, 1);
                 i--;
@@ -110,7 +154,7 @@ document.body.onload = function () {
 
         ctx.font = scale + "px monospace";
         
-        for(var i of chars) {
+        for(let i of chars) {
             let c = mapRange(i[2], 0, canvas.height/(scale*1.5), 1, 0);
             ctx.fillStyle  = `rgba(0, 255, 255, ${c})`;
             ctx.fillText(i[3], i[0], i[1]);
