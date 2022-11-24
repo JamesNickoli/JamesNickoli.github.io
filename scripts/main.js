@@ -170,7 +170,7 @@ document.body.onload = function () {
     }
 
 
-    setInterval(draw, 100);
+    setInterval(draw, 200);
 };
 
 function callbackFunc(entries, observer) {

@@ -301,7 +301,7 @@ span > span {
     z-index: -1;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
 }
 
 #projects {
