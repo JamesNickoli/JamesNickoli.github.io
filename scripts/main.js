@@ -101,6 +101,7 @@ document.body.onload = function () {
         false
     );
 
+    /*
     let canvas = document.getElementById("fancy-background");
     let ctx = canvas.getContext("2d");
 
@@ -171,6 +172,7 @@ document.body.onload = function () {
 
 
     setInterval(draw, 200);
+    */
 };
 
 function callbackFunc(entries, observer) {
