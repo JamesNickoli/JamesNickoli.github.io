@@ -36,9 +36,21 @@ document.body.onload = function () {
     document.getElementsByClassName("splide")[0].classList.remove("show");
     document.getElementsByClassName("splide__list")[0].classList.remove("block");
 
+    
     new Splide(".splide", {
         width: "640px"
     }).mount();
+
+
+    document.getElementById("contactContainer").removeChild(document.getElementById("resumeLink"));
+    // <button id="resume" onclick="window.open('./JamesNickoliResume.pdf')">Download Resume</button>
+    var button = document.createElement("button");
+    button.id = "resume";
+    button.onclick = function () {
+        window.open("./JamesNickoliResume.pdf");
+    };
+    button.innerHTML = "Download Resume";
+    document.getElementById("contactContainer").insertBefore(button, document.getElementById("contactContainer").firstChild);
 
     document.getElementById("laptop-container").style.height = (document.getElementById("laptop-content").offsetHeight+100)+ "px";
     document.getElementById("laptop").style.overflow = "hidden";

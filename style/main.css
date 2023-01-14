@@ -406,6 +406,22 @@ span > span {
     z-index: 1;
 }
 
+#resume {
+    margin: 1em;
+    padding: 0.5em;
+    background-color: #174166;
+    color: #9edefd;
+    border: 1px solid #9edefd;
+    border-radius: 0.25em;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+#resume:hover {
+    background-color: #2f618d;
+    color: #ffffff;
+}
+
 .collapse {
     transform: translate3d(0,0,0) rotateX(-90deg);
 }
