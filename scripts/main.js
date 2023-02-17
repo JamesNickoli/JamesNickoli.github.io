@@ -47,7 +47,7 @@ document.body.onload = function () {
     var button = document.createElement("button");
     button.id = "resume";
     button.onclick = function () {
-        window.open("./JamesNickoliResume.pdf");
+        window.open("./JamesNickoli-SoftwareDeveloper.pdf");
     };
     button.innerHTML = "Download Resume";
     document.getElementById("contactContainer").insertBefore(button, document.getElementById("contactContainer").firstChild);
