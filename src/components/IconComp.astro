@@ -1,0 +1,15 @@
+---
+interface Props {
+    tech: string;
+}
+
+const { tech }: Props = Astro.props;
+
+import { Icon }  from "astro-icon/components";
+
+---
+
+<div class="tech-icon px-2 py-1 bg-gray-700 text-sm rounded">
+    <Icon name={`macchiato/${tech}`}/>
+    <span >{tech}</span>
+</div>

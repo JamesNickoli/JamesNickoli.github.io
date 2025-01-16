@@ -85,7 +85,7 @@
     // get structure of sections and subsections
     const sections: HTMLCollectionOf<Element> = document.getElementsByClassName("VSection");
 
-    let index: { title: string; sec: Element; i: number; subsecs: { title: string; subsec: Element; i: number }[] }[] = [];
+    let index: { title: string; sec: Element; i: number; subsecs: { title: string; sec: Element; i: number }[] }[] = [];
     let pos: number = 0;
 
     for (let i of sections) {
@@ -97,7 +97,7 @@
             i: pos++,
             subsecs: [...i.getElementsByClassName("VSubsection")].map((e) => {
                 const subA: HTMLAnchorElement | null = e.querySelector(".VSubsection-title a");
-                return { title: subA!.id.replaceAll("-", " "), subsec: e, i: pos++ };
+                return { title: subA!.id.replaceAll("-", " "), sec: e, i: pos++ };
             }),
         });
     }
@@ -143,6 +143,23 @@
 
     window.addEventListener("resize", () => {
         nav!.style.width = `${nav!.parentElement!.offsetWidth - 100}px`;
+    });
+
+    const indexFlat:{ title: string; sec: HTMLElement; i: number}[] = index.flatMap((i) => [i, ...i.subsecs]).map((i) => ({title: i.title, sec: i.sec as HTMLElement, i: i.i}));
+
+    // as user scrolls through the page, update the navindex and highlited nav child accordingly
+    window.addEventListener("scroll", () => {
+        let currentSection: number = 0;
+        let currentSectionIndex: number = 0;
+
+        for (let i of indexFlat) {
+            if (i.sec.offsetTop <= window.scrollY + window.innerHeight / 4) {
+                currentSection = i.i;
+                currentSectionIndex = i.i;
+            }
+        }
+
+        centerChildAtIndex(currentSectionIndex);
     });
 
     navChildren[0].style.textShadow = "0 0 10px white";

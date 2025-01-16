@@ -10,7 +10,7 @@ export interface Props {
 
 const { imgLink, jobTitle, company, date, technologies, bulletPoints } = Astro.props;
 
-import { Icon }  from "astro-icon/components";
+import IconComp from "./IconComp.astro";
 ---
 
 <div class="p-6 bg-gray-900 text-white rounded-lg shadow-md">
@@ -29,10 +29,7 @@ import { Icon }  from "astro-icon/components";
 
     <div class="flex flex-wrap gap-2 mb-4">
         {technologies.map((tech) => 
-        <div class="tech-icon px-2 py-1 bg-gray-700 text-sm rounded">
-            <Icon name={`macchiato/${tech}`}/>
-            <span >{tech}</span>
-        </div>
+            <IconComp tech={tech} />
         )}
     </div>
 

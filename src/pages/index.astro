@@ -6,6 +6,7 @@ import NoJS from "../components/NoJS.astro";
 import Experience from "../components/Experience.astro";
 import Project from "../components/Project.astro";
 import { Icon } from "astro-icon/components";
+import IconComp from "../components/IconComp.astro";
 ---
 
 <style is:global>
@@ -36,6 +37,7 @@ import { Icon } from "astro-icon/components";
         z-index: 1;
         transition: opacity 0.3s;
     }
+
     .tech-icon:hover span {
         visibility: visible;
         opacity: 1;
@@ -45,13 +47,19 @@ import { Icon } from "astro-icon/components";
         opacity: 1;
         transition: opacity 0.6s ease-out;
     }
-    
+
     .fade-in-hidden {
         opacity: 0 !important;
     }
+
+    @media (min-width: 1880px) {
+        .project-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
 </style>
 
-<MainLayout title="James Nickoli " seoTitle="James Nickoli" seoDesc="Full Stack Software Developer, Game Dev, and Competitive Programmer">
+<MainLayout title="James Nickoli" seoTitle="James Nickoli" seoDesc="Full Stack Software Developer, Game Dev, and Competitive Programmer">
     <div class="">
         <NoJS>
             <div class="fixed top-0 left-0 w-full bg-gray-900 text-white p-4 text-center z-10 flex flex-row justify-between">
@@ -75,73 +83,156 @@ import { Icon } from "astro-icon/components";
                 <Icon name="github" /><a href="https://github.com/rsninja722">github.com/rsninja722</a>
                 <Icon name="linkedin" /><a href="https://www.linkedin.com/in/james-nickoli/">linkedin.com/in/james-nickoli</a>
                 <Icon name="email" /><a href="mailto:contact@jamesnicko.li">contact@jamesnicko.li</a>
-            </VSections>
+            </VSection>
             <VSection title="Why Should You Hire Me?">
                 <div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 aspect-video border-4 border-white-100">
-                <!-- <iframe class="" src="https://www.youtube.com/embed/M-M4yqryBi4?si=4mnvjXSJF-ChQoK5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+                    <!-- <iframe class="" src="https://www.youtube.com/embed/M-M4yqryBi4?si=4mnvjXSJF-ChQoK5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
                 </div>
             </VSection>
             <VSection title="Work Experience">
-                <Experience imgLink="/assets/1.png" jobTitle="Full Stack Developer" company="Big Viking Games" date="May 2022 - Aug 2022" technologies={["javascript", "elm"]} bulletPoints={["point 1", "point 2"]} />
+                <!-- <Experience imgLink="/assets/1.png" jobTitle="Full Stack Developer" company="Big Viking Games" date="May 2022 - Aug 2022" technologies={["php", "react","java","sql","typescript","docker","firebase","redis","jira","confluence","slack"]} bulletPoints={["Increased game management efficiency by translating internal tools from PHP to React.","Upgraded in-game social systems built using Java, SQL, and Typescript, enhancing play experience for thousands of live users.","Strengthened player connections by discovering sources of long standing bugs via the debugging features of Docker containers.","Collaborated in an Agile team using Jira, Confluence, and Slack to maintain live service games running on Firebase and Redis."]}/> -->
             </VSection>
             <VSection title="Programming Experience">
-                <Experience imgLink="/assets/1.png" jobTitle="Team Member" company="McMaster Competitive Programming Team" date="Oct 2021 - Aug 2023" technologies={["cpp", "python"]} bulletPoints={["Represented McMaster in the International Collegiate Programming Contest as a member of the junior team in 2021-2022, and placed 3rd in the 2022-2023 tryouts, qualifying as a member of the leading team."]} />
+                <Experience
+                    imgLink="/assets/1.png"
+                    jobTitle="Team Member"
+                    company="McMaster Competitive Programming Team"
+                    date="Oct 2021 - Aug 2023"
+                    technologies={["cpp", "python"]}
+                    bulletPoints={[
+                        "Represented McMaster in the International Collegiate Programming Contest as a member of the junior team in 2021-2022, and placed 3rd out of 26 contestants in the 2022-2023 tryouts, qualifying as a member of the leading team.",
+                    ]}
+                />
             </VSection>
 
             <VSection title="Projects">
-                <div class="grid grid-cols-1 2xl:grid-cols-2 gap-4">
+                <div class="project-grid grid grid-cols-1 gap-4">
                     <Project
                         title="Missile Command 3D"
-                        description="description"
+                        description={[
+                            "Participated in Ubisoft's NEXT competition, using the provided API to create a 3D game engine in C++, implementing memory pools and an Entity Component System. ",
+                            "Benchmarked different custom implementations of vector/matrix math, using Python to visualize results. ",
+                            "Recreated the arcade game Missile Command with 3D graphics, and physics-based missiles",
+                        ]}
                         images={[
                             { link: "/assets/1.png", alt: "alt" },
                             { link: "/assets/1.png", alt: "alt" },
-                            { link: "/assets/1.png", alt: "alt" }
+                            { link: "/assets/1.png", alt: "alt" },
                         ]}
-                        link="https://google.com"
-                        technologies={["javascript", "elm"]}
+                        link="https://github.com/rsninja722/UbisoftNext2024"
+                        technologies={["cpp", "python"]}
                     />
-                    <Project title="Multiplayer Mastermind" description="description" images={[{ link: "/assets/1.png", alt: "alt" }]} link="https://google.com" technologies={["javascript", "elm"]} />
-                    <Project title="Webassembly Platformer" description="description" images={[{ link: "/assets/1.png", alt: "alt" }]} link="https://google.com" technologies={["javascript", "elm"]} />
-                    <Project title="Esoteric JS Transpiler" description="description" images={[{ link: "/assets/1.png", alt: "alt" }]} link="https://google.com" technologies={["javascript", "elm"]} />
+                    <Project
+                        title="Multiplayer Mastermind"
+                        description={[
+                            "Built a custom Java package for making GUI programs ( github.com/rsninja722/gamej ) using AWT and Swing, handling multi-threading, rendering that leverages the GPU, asset loading, camera systems, and mouse and keyboard input, also providing documentation and project templates. ",
+                            "Defined a communication protocol and wrote a server using Netty that can connect users with different clients. ",
+                            "Created a game client and a bot server to also allow individual play.",
+                        ]}
+                        images={[{ link: "/assets/1.png", alt: "alt" }]}
+                        link="https://github.com/rsninja722/MasterMind"
+                        technologies={["java"]}
+                    />
+                    <Project
+                        title="Webassembly Platformer"
+                        description={[
+                            "Created a platformer game with C++ using the Raylib game library for the Ludem Dare 51 game jam in 72 hours",
+                            "Compiled the game to run on the web with WebAssembly using the Emscripten toolchain",
+                        ]}
+                        images={[{ link: "/assets/1.png", alt: "alt" }]}
+                        link="https://github.com/rsninja722/CabushsKookyClimb"
+                        technologies={["cpp", "web-assembly"]}
+                    />
+                    <Project
+                        title="Esoteric JS Transpiler"
+                        description="As a programming exercise, created a transpiler that uses only the characters =_$(){}><~!%^&|*-+[];:?.,/ to encode any Javascript code"
+                        images={[{ link: "/assets/1.png", alt: "alt" }]}
+                        link="https://github.com/rsninja722/JSFrick"
+                        technologies={["javascript", "html", "css"]}
+                    />
                 </div>
             </VSection>
             <VSection title="Technologies">
+                <div>
+                    <div class="flex flex-row flex-wrap gap-2">
+                        <p>Languages</p>
+                        <div>
+                            <IconComp tech="javascript" />
+                            <IconComp tech="html" />
+                            <IconComp tech="css" />
+                            <IconComp tech="python" />
+                            <IconComp tech="java" />
+                            <IconComp tech="php" />
+                            <IconComp tech="c" />
+                            <IconComp tech="cpp" />
+                            <IconComp tech="csharp" />
+                            <IconComp tech="haskell" />
+                            <IconComp tech="sql" />
+                        </div>
+                    </div>
+                    <div class="flex flex-row flex-wrap gap-2">
+                        <p>Frameworks / Technologies</p>
+                        <div>
+                            <IconComp tech="astro" />
+                            <IconComp tech="tailwind" />
+                            <IconComp tech="react" />
+                            <IconComp tech="nodejs" />
+                            <IconComp tech="raylib" />
+                            <IconComp tech="mariadb" />
+                            <IconComp tech="mongodb" />
+                            <IconComp tech="web-assembly" />
+                            <IconComp tech="docker" />
+                            <IconComp tech="firebase" />
+                        </div>
+                    </div>
+                    <div class="flex flex-row flex-wrap gap-2">
+                        <p>Tools</p>
+                        <div>
+                            <IconComp tech="git" />
+                            <IconComp tech="linux" />
+                            <IconComp tech="jira" />
+                            <IconComp tech="confluence" />
+                            <IconComp tech="slack" />
+                        </div>
+                    </div>
+                </div>
             </VSection>
         </VSections>
     </div>
 </MainLayout>
 
-
 <script>
-// fade in on view logic
-document.addEventListener('DOMContentLoaded', () => {
-    const fadeIns: NodeListOf<HTMLElement> = document.querySelectorAll('.fade-in');
+    // fade in on view logic
+    document.addEventListener("DOMContentLoaded", () => {
+        const fadeIns: NodeListOf<HTMLElement> = document.querySelectorAll(".fade-in");
 
-    // add hiding class with js in case user has js disabled
-    fadeIns.forEach(element => {
-        element.classList.add('fade-in-hidden');
-    });
+        // add hiding class with js in case user has js disabled
+        fadeIns.forEach((element) => {
+            element.classList.add("fade-in-hidden");
+        });
 
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.remove('fade-in-hidden');
-                observer.unobserve(entry.target);
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove("fade-in-hidden");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        fadeIns.forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Handle elements visible at the start
+        fadeIns.forEach((element) => {
+            const rect = element.getBoundingClientRect();
+            if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                element.classList.remove("fade-in-hidden");
             }
         });
-    }, { threshold: 0.1 });
-
-    fadeIns.forEach(element => {
-        observer.observe(element);
     });
-
-    // Handle elements visible at the start
-    fadeIns.forEach(element => {
-        const rect = element.getBoundingClientRect();
-        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-            element.classList.remove('fade-in-hidden');
-        }
-    });
-});
 </script>
