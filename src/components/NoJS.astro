@@ -1,0 +1,20 @@
+---
+
+// A component that immediately deletes itself if javascript is enabled
+// Used to add back up elements for users with javascript disabled
+
+---
+
+<div class="NoJS-will-be-deleted">
+    <slot />
+</div>
+
+<script>
+const toDelete:HTMLCollectionOf<Element> = document.getElementsByClassName("NoJS-will-be-deleted");
+
+for(let i=toDelete.length-1;i>-1;--i) {
+    const e:HTMLElement = toDelete[i] as HTMLElement;
+
+    e.parentElement?.removeChild(e);
+}
+</script>

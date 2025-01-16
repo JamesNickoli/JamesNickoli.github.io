@@ -1,0 +1,16 @@
+---
+interface Props {
+    title: String,
+
+}
+
+const { title }: Props = Astro.props;
+---
+
+<div class="VSubsection inline-block lg:max-w-[40vw]">
+    <div class="VSubsection-title">
+        <a id={`${title.replaceAll(" ","-")}`}></a>
+        <p>{title}</p>
+    </div>
+    <slot />
+</div>

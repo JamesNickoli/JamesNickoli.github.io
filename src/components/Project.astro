@@ -1,0 +1,25 @@
+---
+
+interface Props {
+    title: string;
+    description: string,
+    images: {link:string,alt:string}[],
+    link: string,
+    technologies: string[];
+}
+
+const { title, description, images, link, technologies }: Props = Astro.props;
+
+import Carousel from './Carousel.astro'
+import CarouselItem from './CarouselItem.astro'
+---
+
+<div>
+    <Carousel title={title} description={description}, link={link}, technologies={technologies}>
+        {images.map((img) => 
+            <CarouselItem>
+                <img src={img.link} alt={img.alt} draggable="false" />
+            </CarouselItem>
+        )}
+    </Carousel>
+</div>

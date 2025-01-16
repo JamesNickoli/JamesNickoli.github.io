@@ -1,0 +1,16 @@
+---
+interface Props {
+    title: String,
+
+}
+
+const { title }: Props = Astro.props;
+---
+
+<div class="VSection">
+    <div class="VSection-title">
+        <a id={`${title.replaceAll(" ","-")}`}></a>
+        <p>{title === "Top" ? null : title}</p>
+    </div>
+    <slot />
+</div>

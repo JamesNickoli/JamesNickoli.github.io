@@ -1,0 +1,289 @@
+---
+// Importing the Astro framework and props interface
+interface Props {
+    title: string;
+    description: string,
+    link?: string,
+    technologies?: string[];
+}
+const { title, description, link, technologies }: Props = Astro.props;
+
+import { Icon }  from "astro-icon/components";
+
+---
+
+<div class="h-[80svh] md:h-[70svh] ld:h-[60svh] flex flex-col lg:flex-row lg:items-center p-6 gap-6">
+    <!-- Content Section -->
+    <div class="w-full lg:w-1/3 text-center lg:text-left">
+        <h2 class="text-2xl font-bold">{title}</h2>
+        <p class="text-lg text-gray-600">{description}</p>
+        {link ? <a href={link} class="text-blue-500 underline">view</a> : null}
+        <div class="flex flex-wrap gap-2 mb-4">
+            {technologies ? technologies.map((tech) => 
+                <div class="tech-icon px-2 py-1 bg-gray-700 text-sm rounded">
+                    <Icon name={`macchiato/${tech}`}/>
+                    <span >{tech}</span>
+                </div>
+            ) : null}
+        </div>
+    </div>
+
+    <!-- Carousel Section -->
+    <div class="carousel-container w-full h-full lg:w-2/3 relative" style="overflow: scroll;">
+        <div class="carousel-inner">
+            <slot />
+        </div>
+        <div class="bg-gradient-to-r from-back1 to-transparent absolute left-0 top-0 h-full w-[10%]"></div>
+        <div class="bg-gradient-to-r from-transparent to-back1 absolute right-0 top-0 h-full w-[10%]"></div>
+        <button class="prev hidden absolute left-2 top-1/2 transform-translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">&#9664;</button>
+        <button class="next hidden absolute right-2 top-1/2 transform-translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">&#9654;</button>
+    </div>
+</div>
+
+<style>
+    /* Tailwind classes override for 3D carousel effect */
+    .carousel-container {
+        perspective: 1000px;
+        max-height: 50vh;
+    }
+    .carousel-inner {
+        display: block;
+        transform-style: preserve-3d;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<script>
+    // overflow set to scroll incase JS is disabled
+    // set it to hidden since JS is enabled
+    const containers = document.querySelectorAll(".carousel-container");
+    containers.forEach((c) => {
+        (c as HTMLElement).style.overflow = "hidden";
+    });
+
+    // rotate amount for each item each index away from being centered
+    const angle = 25;
+    // used to show prev/next buttons on desktop with small screens
+    const probablyMobile = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+    class carouselManager {
+        carousel: HTMLElement;
+        prev: HTMLElement;
+        next: HTMLElement;
+        items: HTMLCollectionOf<Element>;
+        size: number;
+        currentIndex: number;
+        lastIndex: number;
+        ilm1: number;
+        startX: number;
+        isDragging: boolean;
+
+        constructor(carousel: HTMLElement) {
+            this.carousel = carousel;
+            this.prev = carousel.parentElement!.querySelector(".prev") as HTMLElement;
+            this.next = carousel.parentElement!.querySelector(".next") as HTMLElement;
+            this.items = carousel.getElementsByClassName("carousel-item");
+            this.size = carousel.offsetHeight * 0.9;
+            this.currentIndex = 0;
+            this.lastIndex = 0;
+            this.ilm1 = this.items.length - 1;
+            this.startX = 0;
+            this.isDragging = false;
+
+            this.addListeners();
+            this.updateButtons();
+            this.calcPositions();
+            this.updateCarousel();
+        }
+
+        // hide prev/next buttons when at the end
+        updateButtons() {
+            if (window.innerWidth < 1024 && probablyMobile) {
+                this.prev.style.display = "none";
+                this.next.style.display = "none";
+                return;
+            }
+
+            this.prev.style.display = this.currentIndex > 0 ? "block" : "none";
+            this.next.style.display = this.currentIndex < this.ilm1 ? "block" : "none";
+        }
+
+        // resizes and positions carousel items after window resize
+        calcPositions() {
+            // carousel-item width and height
+            this.size = Math.floor(this.carousel.offsetHeight * 0.9);
+            // offsets to center
+            const top = Math.floor((this.carousel.offsetHeight - this.size) / 2);
+            const left = Math.floor((this.carousel.offsetWidth - this.size) / 2);
+
+            for (let i = 0; i < this.items.length; i++) {
+                const item = this.items[i] as HTMLElement;
+                item.style.height = `${this.size}px`;
+                item.style.width = `${this.size}px`;
+                item.style.top = `${top}px`;
+                item.style.left = `${left}px`;
+            }
+
+            this.updateButtons();
+            // recalculate transforms
+            this.updateCarousel();
+        }
+
+        // update carousel item transforms
+        updateCarousel(partialRotate: number = 0) {
+            for (let i = 0; i < this.items.length; i++) {
+                const item = this.items[i] as HTMLElement;
+                const diff = i - this.currentIndex;
+                let outside = Math.abs(diff) > 2;
+                // hide and don't update non visible items
+                if (outside) {
+                    if (item.style.display === "none") continue;
+                    setTimeout(() => {
+                        item.style.display = "none";
+                    }, 500);
+                    const side = Math.sign(diff);
+                    item.style.transform = `translateX(${side * this.size * 2}px) rotateY(${90 * side}deg) scale(${0.7})`;
+                    continue;
+                }
+
+                const partialFactor = partialRotate / this.size;
+                let scaleFactor = 1;
+                let transXFactor = 1;
+                switch (diff) {
+                    case 0:
+                        scaleFactor = 1 - Math.abs(partialFactor) / 8;
+                        transXFactor = this.size * 0.95 * (diff + partialFactor);
+                        break;
+                    case 1:
+                        scaleFactor = 1 - Math.abs(diff) * 0.1 - (partialFactor < 0 ? partialFactor / 15 : partialFactor / 5);
+                        transXFactor = this.size * 0.95 * (diff + (partialFactor < 0 ? 0.9 : 0.5) * partialFactor);
+                        break;
+                    case -1:
+                        scaleFactor = 1 - Math.abs(diff) * 0.1 + (partialFactor > 0 ? partialFactor / 15 : partialFactor / 5);
+                        transXFactor = this.size * 0.95 * (diff + (partialFactor > 0 ? 0.9 : 0.5) * partialFactor);
+                        break;
+                    case 2:
+                        scaleFactor = 1 - Math.abs(diff) * 0.15 - (partialFactor < 0 ? partialFactor / 15 : partialFactor / 5);
+                        transXFactor = this.size * (Math.sign(diff) * 1.5 + ((partialFactor < 0 ? 1 : 0.6) * partialFactor) / 2);
+                        break;
+                    case -2:
+                        scaleFactor = 1 - Math.abs(diff) * 0.15 + (partialFactor > 0 ? partialFactor / 15 : partialFactor / 5);
+                        transXFactor = this.size * (Math.sign(diff) * 1.5 + ((partialFactor > 0 ? 1 : 0.6) * partialFactor) / 2);
+                        break;
+                }
+                const rotYFactor = angle * (diff + partialFactor);
+
+                if ((diff === 2 && this.lastIndex < this.currentIndex) || (diff === -2 && this.lastIndex < this.currentIndex)) {
+                    setTimeout(() => {
+                        item.style.transform = `translateX(${transXFactor}px) rotateY(${rotYFactor}deg) scale(${scaleFactor})`;
+                    }, 1);
+                } else {
+                    item.style.transform = `translateX(${transXFactor}px) rotateY(${rotYFactor}deg) scale(${scaleFactor})`;
+                }
+                // disable animation while dragging for responsiveness
+                item.style.transition = partialRotate === 0 ? "transform 0.5s ease" : "none";
+                if (item.style.display === "none") {
+                    item.style.display = "block";
+                }
+            }
+
+            if (partialRotate === 0) {
+                this.updateButtons();
+            }
+        }
+
+        addListeners() {
+            this.prev.addEventListener("click", () => {
+                if (this.currentIndex <= 0) {
+                    return;
+                }
+                this.currentIndex--;
+                this.updateButtons();
+                this.updateCarousel();
+            });
+
+            this.next.addEventListener("click", () => {
+                if (this.currentIndex >= this.ilm1) {
+                    return;
+                }
+                this.currentIndex++;
+                this.updateButtons();
+                this.updateCarousel();
+            });
+
+            this.carousel.addEventListener("mousedown", (e) => {
+                this.isDragging = true;
+                this.startX = e.clientX;
+            });
+
+            this.carousel.addEventListener("mousemove", (e) => {
+                if (!this.isDragging) return;
+                const deltaX = e.clientX - this.startX;
+                if (Math.abs(deltaX) > this.size / 2) {
+                    this.currentIndex = Math.min(Math.max(this.currentIndex - Math.sign(deltaX), 0), this.ilm1);
+                    this.isDragging = false;
+                    this.updateCarousel();
+                } else {
+                    this.updateCarousel(deltaX);
+                }
+            });
+
+            this.carousel.addEventListener("mouseup", (e) => {
+                this.isDragging = false;
+                if (e.clientX !== this.startX) {
+                    this.updateCarousel();
+                }
+            });
+
+            this.carousel.addEventListener("mouseleave", (e) => {
+                if (this.isDragging) {
+                    this.calcPositions();
+                }
+                this.isDragging = false;
+            });
+
+            this.carousel.addEventListener("touchstart", (e) => {
+                this.isDragging = true;
+                this.startX = e.touches[0].clientX;
+            }, {passive:true});
+
+            this.carousel.addEventListener("touchmove", (e) => {
+                if (!this.isDragging) return;
+                const deltaX = e.touches[0].clientX - this.startX;
+                if (Math.abs(deltaX) > this.size / 3) {
+                    this.currentIndex = Math.min(Math.max(this.currentIndex - Math.sign(deltaX), 0), this.ilm1);
+                    this.isDragging = false;
+                    this.updateCarousel();
+                } else {
+                    this.updateCarousel(deltaX);
+                }
+            }, {passive:true});
+
+            this.carousel.addEventListener("touchend", (e) => {
+                this.isDragging = false;
+                if (e.changedTouches[0].clientX !== this.startX) {
+                    this.updateCarousel();
+                }
+            });
+
+            this.carousel.addEventListener("touchcancel", (e) => {
+                this.isDragging = false;
+            });
+        }
+    }
+
+    const carousels = document.querySelectorAll(".carousel-inner");
+    let carouselManagers: carouselManager[] = [];
+
+    carousels.forEach((carousel) => {
+        const cm = new carouselManager(carousel as HTMLElement);
+        carouselManagers.push(cm);
+    });
+    window.addEventListener("resize", () => {
+        carouselManagers.forEach((cm) => {
+            cm.calcPositions();
+        });
+    });
+</script>

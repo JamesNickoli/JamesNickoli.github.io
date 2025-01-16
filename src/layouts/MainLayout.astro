@@ -1,0 +1,33 @@
+---
+import MainHead from "./MainHead.astro";
+import Footer from "../components/Footer.astro";
+
+const { title, seoTitle, seoDesc } = Astro.props;
+---
+
+<html>
+    <MainHead title={title} seoTitle={seoTitle} seoDesc={seoDesc} />
+    <body class="bg-back1 text-white">
+        <slot />
+        <!-- some kind of container that scrolls through projects with an animation -->
+        <!-- test without JS -->
+        <Footer />
+        <style>
+            body {
+                font-family: "Lexend", sans-serif;
+                min-height: 100vh;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            @media prefers-reduced-motion {
+                html {
+                    scroll-behavior: auto;
+                    transition: none !important;
+                }
+            }
+        </style>
+    </body>
+</html>

@@ -1,0 +1,151 @@
+<div class="VSections">
+    <div class="fixed top-0 left-1/2 -translate-x-1/2  w-3/4 md:w-2/3 lg:w-1/2 h-[2rem] flex flex-row z-10 backdrop-blur-sm justify-between">
+        <button id="nav-left">&leftarrow;</button>
+        <div id="top-slot" class="flex w-fit"></div><div id="VSections-nav" class="flex flex-row overflow-hidden justify-between"></div>
+        <button id="nav-right">&rightarrow;</button>
+    </div>
+    <slot />
+</div>
+
+<style is:global>
+.VSections-nav-sec, .VSections-nav-subsec {
+    -webkit-transition: text-shadow 0.3s linear;
+    -moz-transition: text-shadow 0.3s linear;
+    -ms-transition: text-shadow 0.3s linear;
+    -o-transition: text-shadow 0.3s linear;
+    transition: text-shadow 0.3s linear;
+}
+</style>
+
+<script>
+    let navIndex: number = 0;
+    const navLeft: HTMLElement | null = document.getElementById("nav-left");
+    const navRight: HTMLElement | null = document.getElementById("nav-right");
+    let navChildren: HTMLElement[] = [];
+
+    function updateButtonVisibility() { 
+        navLeft!.style.visibility = navIndex > 0 ? "visible" : "hidden";
+        navRight!.style.visibility = navIndex < navChildren.length - 1 ? "visible" : "hidden";
+    }
+
+    function centerChildAtIndex(index: number, buttonPress: boolean = false) {
+        if(navIndex === index) {
+            return;
+        }
+
+        const navContainer = document.getElementById("VSections-nav");
+
+        if (index < 0 || index >= navChildren.length) {
+            return;
+        }
+
+        // remove text shadow from previous child
+        navChildren[navIndex].style.textShadow = "";
+
+        navIndex = index;
+
+        const aid: string = (navChildren[index].firstChild as HTMLAnchorElement).href.split("#")[1];
+
+        if (buttonPress) {
+            // location.hash = `#${(children[index]!.firstChild as HTMLAnchorElement)!.href.split("#")[1]}`;    
+            const target: HTMLElement | null = document.getElementById(aid);
+            const ttop = target!.offsetTop;
+            window.scrollTo({ top: ttop, behavior: "smooth" });
+        }
+
+        // Get container and child dimensions
+        const containerWidth = navContainer!.offsetWidth;
+        const containerScrollWidth = navContainer!.scrollWidth;
+        const child = navChildren[index];
+        const childLeft = child.offsetLeft;
+        const childWidth = child.offsetWidth;
+
+        // Calculate target scroll position to center the child
+        const targetScrollLeft = aid === "Top" ? 0 : (childLeft - (150));
+
+        // Constrain target scroll to prevent overflow on either side
+        const maxScrollLeft = containerScrollWidth - containerWidth;
+        const constrainedScrollLeft = Math.max(0, Math.min(targetScrollLeft, maxScrollLeft));
+
+        // Smoothly scroll the container
+        navContainer!.scrollTo({
+            left: constrainedScrollLeft,
+            behavior: "smooth",
+        });
+
+        // add glow to current child
+        navChildren[navIndex].style.textShadow = "0 0 10px white";
+
+        updateButtonVisibility();
+    }
+
+    navLeft!.addEventListener("click", () => centerChildAtIndex(navIndex - 1, true));
+    navRight!.addEventListener("click", () => centerChildAtIndex(navIndex + 1, true));
+
+    // get structure of sections and subsections
+    const sections: HTMLCollectionOf<Element> = document.getElementsByClassName("VSection");
+
+    let index: { title: string; sec: Element; i: number; subsecs: { title: string; subsec: Element; i: number }[] }[] = [];
+    let pos: number = 0;
+
+    for (let i of sections) {
+        const a: HTMLAnchorElement | null = i.querySelector(".VSection-title a");
+
+        index.push({
+            title: a!.id.replaceAll("-", " "),
+            sec: i,
+            i: pos++,
+            subsecs: [...i.getElementsByClassName("VSubsection")].map((e) => {
+                const subA: HTMLAnchorElement | null = e.querySelector(".VSubsection-title a");
+                return { title: subA!.id.replaceAll("-", " "), subsec: e, i: pos++ };
+            }),
+        });
+    }
+
+    // populate nav
+    const nav = document.getElementById("VSections-nav");
+
+    let idIndex: number = 0;
+
+    for (let i of index) {
+        const div: HTMLDivElement = document.createElement("div");
+        const a: HTMLAnchorElement = document.createElement("a");
+        div.className = "VSections-nav-sec my-auto mx-2 text-nowrap";
+        a.href = `#${i.title.replaceAll(" ", "-")}`;
+        a.innerText = i.title;
+        a.id = `nav-${idIndex++}`;
+        a.addEventListener("click", (e) => centerChildAtIndex(parseInt((e!.target as HTMLElement).id.split("-")[1])));
+        div.appendChild(a);
+        navChildren.push(div);
+        if (i.title === "Top") {
+            document.getElementById("top-slot")!.appendChild(div);
+        } else {
+            nav!.appendChild(div);
+        }
+        
+        if (i.subsecs.length === 0) {
+            continue;
+        }
+
+        for (let j of i.subsecs) {
+            const div: HTMLDivElement = document.createElement("div");
+            const a: HTMLAnchorElement = document.createElement("a");
+            div.className = "VSections-nav-subsec my-auto mx-1 text-nowrap text-sm lowercase";
+            a.href = `#${j.title.replaceAll(" ", "-")}`;
+            a.innerText = j.title;
+            a.id = `nav-${idIndex++}`;
+            a.addEventListener("click", (e) => centerChildAtIndex(parseInt((e!.target as HTMLElement).id.split("-")[1])));
+            div.appendChild(a);
+            navChildren.push(div);
+            nav!.appendChild(div);
+        }
+    }
+
+    window.addEventListener("resize", () => {
+        nav!.style.width = `${nav!.parentElement!.offsetWidth - 100}px`;
+    });
+
+    navChildren[0].style.textShadow = "0 0 10px white";
+
+    updateButtonVisibility();
+</script>
