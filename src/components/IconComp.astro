@@ -1,15 +1,16 @@
 ---
 interface Props {
     tech: string;
+    custom?: boolean;
 }
 
-const { tech }: Props = Astro.props;
+const { tech, custom }: Props = Astro.props;
 
 import { Icon }  from "astro-icon/components";
 
 ---
 
-<div class="tech-icon px-2 py-1 bg-gray-700 text-sm rounded">
-    <Icon name={`macchiato/${tech}`}/>
+<div class={`tech-icon px-1 py-1 text-sm rounded`}>
+    <Icon name={`${custom ? "" : "macchiato/"}${tech}`} size={32}/>
     <span >{tech}</span>
 </div>

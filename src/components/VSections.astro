@@ -1,8 +1,10 @@
 <div class="VSections">
-    <div class="fixed top-0 left-1/2 -translate-x-1/2  w-3/4 md:w-2/3 lg:w-1/2 h-[2rem] flex flex-row z-10 backdrop-blur-sm justify-between">
-        <button id="nav-left">&leftarrow;</button>
-        <div id="top-slot" class="flex w-fit"></div><div id="VSections-nav" class="flex flex-row overflow-hidden justify-between"></div>
-        <button id="nav-right">&rightarrow;</button>
+    <div class="sticky top-0 w-full z-10 text">
+        <div class="w-full h-[4rem] flex flex-row items-center backdrop-blur-sm justify-center border-b border-t-main-accent-light">
+            <button id="nav-left" class="text-t-main-accent">&#9664;</button>
+            <div id="top-slot" class="flex w-fit"></div><div id="VSections-nav" class="flex flex-row overflow-hidden justify-between xl:mx-24 2xl:mx-52"></div>
+            <button id="nav-right" class="text-t-main-accent">&#9654;</button>
+        </div>
     </div>
     <slot />
 </div>
@@ -15,6 +17,14 @@
     -o-transition: text-shadow 0.3s linear;
     transition: text-shadow 0.3s linear;
 }
+
+#VSections-nav div:hover {
+    background-color: var(--bg-purp-light);
+}
+
+#VSections-nav div {
+    transition: background-color 0.3s linear;
+}
 </style>
 
 <script>
@@ -23,24 +33,41 @@
     const navRight: HTMLElement | null = document.getElementById("nav-right");
     let navChildren: HTMLElement[] = [];
 
+    let scrollEvent: boolean = true;
+    let lastScroll: number = 0;
+    const textGlow = "0 0 10px white";
+    const textAccent = "text-t-main-accent-light";
+
+    let hideButtons = false;
+
     function updateButtonVisibility() { 
+        if (hideButtons) {
+            navLeft!.style.visibility = "hidden";
+            navRight!.style.visibility = "hidden";
+            return;
+        }
         navLeft!.style.visibility = navIndex > 0 ? "visible" : "hidden";
         navRight!.style.visibility = navIndex < navChildren.length - 1 ? "visible" : "hidden";
     }
 
-    function centerChildAtIndex(index: number, buttonPress: boolean = false) {
+    function centerChildAtIndex(index: number, buttonPress: boolean = false, scroll: boolean = false) {
         if(navIndex === index) {
             return;
         }
 
         const navContainer = document.getElementById("VSections-nav");
-
+        
         if (index < 0 || index >= navChildren.length) {
             return;
+        }
+        
+        if (!scroll) {
+            scrollEvent = false;
         }
 
         // remove text shadow from previous child
         navChildren[navIndex].style.textShadow = "";
+        navChildren[navIndex].classList.remove(textAccent);
 
         navIndex = index;
 
@@ -74,7 +101,10 @@
         });
 
         // add glow to current child
-        navChildren[navIndex].style.textShadow = "0 0 10px white";
+        navChildren[navIndex].style.textShadow = textGlow;
+        navChildren[navIndex].classList.add(textAccent);
+
+        
 
         updateButtonVisibility();
     }
@@ -110,10 +140,11 @@
     for (let i of index) {
         const div: HTMLDivElement = document.createElement("div");
         const a: HTMLAnchorElement = document.createElement("a");
-        div.className = "VSections-nav-sec my-auto mx-2 text-nowrap";
+        div.className = "VSections-nav-sec my-auto mx-2 text-nowrap py-2 px-2";
         a.href = `#${i.title.replaceAll(" ", "-")}`;
         a.innerText = i.title;
         a.id = `nav-${idIndex++}`;
+        a.style.textDecoration = "none";
         a.addEventListener("click", (e) => centerChildAtIndex(parseInt((e!.target as HTMLElement).id.split("-")[1])));
         div.appendChild(a);
         navChildren.push(div);
@@ -126,14 +157,15 @@
         if (i.subsecs.length === 0) {
             continue;
         }
-
+        
         for (let j of i.subsecs) {
             const div: HTMLDivElement = document.createElement("div");
             const a: HTMLAnchorElement = document.createElement("a");
-            div.className = "VSections-nav-subsec my-auto mx-1 text-nowrap text-sm lowercase";
+            div.className = "VSections-nav-subsec my-auto mx-1 text-nowrap text-sm lowercase py-2 px-2";
             a.href = `#${j.title.replaceAll(" ", "-")}`;
             a.innerText = j.title;
             a.id = `nav-${idIndex++}`;
+            a.style.textDecoration = "none";
             a.addEventListener("click", (e) => centerChildAtIndex(parseInt((e!.target as HTMLElement).id.split("-")[1])));
             div.appendChild(a);
             navChildren.push(div);
@@ -141,28 +173,49 @@
         }
     }
 
-    window.addEventListener("resize", () => {
-        nav!.style.width = `${nav!.parentElement!.offsetWidth - 100}px`;
-    });
+    function resizeNav() {
+        if (nav) {
+            nav.style.width = `${nav.parentElement!.clientWidth - parseInt(window.getComputedStyle(nav).marginLeft.replace("px","")) * 2}px`;
+        }
+        // detect if nav is overflowing
+        hideButtons = nav!.scrollWidth <= nav!.clientWidth;
+        updateButtonVisibility();
+    }
+
+    window.addEventListener("resize", resizeNav);
 
     const indexFlat:{ title: string; sec: HTMLElement; i: number}[] = index.flatMap((i) => [i, ...i.subsecs]).map((i) => ({title: i.title, sec: i.sec as HTMLElement, i: i.i}));
 
     // as user scrolls through the page, update the navindex and highlited nav child accordingly
     window.addEventListener("scroll", () => {
-        let currentSection: number = 0;
+        if (window.scrollY === lastScroll) {
+            return;
+        }
+
+        if (!scrollEvent) {
+            return;
+        }
         let currentSectionIndex: number = 0;
 
+
         for (let i of indexFlat) {
-            if (i.sec.offsetTop <= window.scrollY + window.innerHeight / 4) {
-                currentSection = i.i;
+            if (i.sec.offsetTop <= window.scrollY + window.innerHeight / 3) {
                 currentSectionIndex = i.i;
             }
         }
 
-        centerChildAtIndex(currentSectionIndex);
+        centerChildAtIndex(currentSectionIndex, false, true);
     });
 
-    navChildren[0].style.textShadow = "0 0 10px white";
+    setInterval(() => {
+        if (!scrollEvent && window.scrollY === lastScroll) {
+            scrollEvent = true;
+        }
+        lastScroll = window.scrollY;
+    }, 100);
 
-    updateButtonVisibility();
+    navChildren[0].style.textShadow = textGlow;
+    navChildren[0].classList.add(textAccent);
+
+    resizeNav();
 </script>

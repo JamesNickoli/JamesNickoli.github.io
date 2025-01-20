@@ -1,16 +1,22 @@
 ---
 interface Props {
     title: String,
-
+    noLine?: Boolean
 }
 
-const { title }: Props = Astro.props;
+const { title, noLine = false }: Props = Astro.props;
 ---
 
-<div class="VSection">
-    <div class="VSection-title">
-        <a id={`${title.replaceAll(" ","-")}`}></a>
-        <p>{title === "Top" ? null : title}</p>
+<div class="VSection lg:px-4 py-8 mx-4 md:mx-24">
+    <div class="fade-in relative flex items-center text-t-gold VSection-title mb-12">
+        <a class="absolute -top-[6rem]" id={`${title.replaceAll(" ","-")}`}></a>
+        <p class="text-2xl mx-4">{title === "Top" ? null : title}</p>
+        <!-- horizontal line filling remaining space -->
+        {
+            noLine ? null : <span class="flex-grow h-[1px] mr-4 md:mr-24 2xl:mr-52 bg-gradient-to-r from-t-gold-accent to-t-main-accent"></span>
+        }
     </div>
-    <slot />
+    <div class="fade-in">
+        <slot />
+    </div>
 </div>
