@@ -2,7 +2,7 @@
     <div class="sticky top-0 w-full z-10 text">
         <div class="w-full h-[4rem] flex flex-row items-center backdrop-blur-sm justify-center border-b border-t-main-accent-light">
             <button id="nav-left" class="text-t-main-accent">&#9664;</button>
-            <div id="top-slot" class="flex w-fit"></div><div id="VSections-nav" class="flex flex-row overflow-hidden justify-between xl:mx-24 2xl:mx-52"></div>
+            <div id="top-slot" class="flex w-fit"></div><div id="VSections-nav" class="flex flex-row overflow-scroll justify-between xl:mx-24 2xl:mx-52"></div>
             <button id="nav-right" class="text-t-main-accent">&#9654;</button>
         </div>
     </div>
@@ -24,6 +24,15 @@
 
 #VSections-nav div {
     transition: background-color 0.3s linear;
+}
+
+#VSections-nav::-webkit-scrollbar {
+    display: none;
+}
+
+#VSections-nav {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 </style>
 
@@ -75,7 +84,7 @@
 
         if (buttonPress) {
             // location.hash = `#${(children[index]!.firstChild as HTMLAnchorElement)!.href.split("#")[1]}`;    
-            const target: HTMLElement | null = document.getElementById(aid);
+            const target: HTMLElement | null = document.getElementById(aid)!.parentElement;
             const ttop = target!.offsetTop;
             window.scrollTo({ top: ttop, behavior: "smooth" });
         }
