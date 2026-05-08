@@ -91,6 +91,18 @@ import IconComp from "../components/IconComp.astro";
         }
     }
 
+    @media (min-width: 2552px) {
+        .project-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    @media (min-width: 3330px) {
+        body {
+            font-size: 1.25rem;
+        }
+    }
+
     a {
         text-decoration: underline;
     }
@@ -125,8 +137,8 @@ import IconComp from "../components/IconComp.astro";
                 <div class="pt-20 pl-20 pb-52">
                     <div class="flex flex-col lg:flex-row gap-4">
                         <div class="lg:w-1/2">
-                            <h1 class="text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-t-gold-accent to-t-main-accent">James Nickoli</h1>
-                            <h2 class="text-2xl md:text-3xl text-t-dark">Full Stack Developer</h2>
+                            <h1 class="text-5xl md:text-6xl 2xl:text-8xl bg-clip-text text-transparent bg-gradient-to-r from-t-gold-accent to-t-main-accent">James Nickoli</h1>
+                            <h2 class="text-2xl md:text-3xl 2xl:text-5xl text-t-dark">Full Stack Developer</h2>
                             <div class="flex flex-row w-min mt-4 stroke-t-main-accent fill-t-main-accent text-t-main-accent">
                                 <a href="https://github.com/rsninja722">
                                     <IconComp tech="github" custom={true} />
@@ -137,18 +149,18 @@ import IconComp from "../components/IconComp.astro";
                             </div>
                         </div>
                         <div class="h-[6rem] lg:w-1/2 flex items-end">
-                            <h3 class="text-xl text-center text-t-dark">"Striving for deep understanding"</h3>
+                            <h3 class="text-xl 2xl:text-2xl text-center text-t-dark">"Striving for deep understanding"</h3>
                         </div>
                     </div>
                 </div>
             </VSection>
-            <VSection title="Video Cover Letter">
+            <!-- <VSection title="Video Cover Letter">
                 <div class="flex justify-center w-full">
                     <div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 aspect-video">
                         <iframe class="w-full h-full" src="https://www.youtube.com/embed/M-M4yqryBi4?si=4mnvjXSJF-ChQoK5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
-            </VSection>
+            </VSection> -->
             <VSection title="Work Experience">
                 <Experience imgLink="/assets/BVG_Logo.png" jobTitle="Full Stack Developer" company="Big Viking Games" date="May 2022 - Aug 2022" technologies={["php", "react", "java", "sql", "typescript", "docker", "firebase", "redis", "jira", "confluence", "slack"]} bulletPoints={["Increased game management efficiency by translating internal tools from PHP to React.", "Upgraded in-game social systems built using Java, SQL, and Typescript, enhancing play experience for thousands of live users.", "Strengthened player connections by discovering sources of long standing bugs via the debugging features of Docker containers.", "Collaborated in an Agile team using Jira, Confluence, and Slack to maintain live service games running on Firebase and Redis."]} />
             </VSection>
@@ -158,6 +170,18 @@ import IconComp from "../components/IconComp.astro";
 
             <VSection title="Projects">
                 <div class="project-grid grid grid-cols-1 gap-4">
+                    <Project
+                        title="TCG Collection Management App"
+                        description={["Collectibles tracking and trading cross-platform app built with Next.js, Capacitor, Vercel, and Supabase.", "Visual card identification using YOLO, OpenCV, and Image Hashing.", "Automatic trade recommendations based on users' collections and wishlists."]}
+                        images={[
+                            { link: "/assets/app3.gif", alt: "Card scanning" },
+                            { link: "/assets/app1.jpg", alt: "Native android app: home page" },
+                            { link: "/assets/app2.jpg", alt: "Web application: trading page" }
+                        ]}
+                        link={["https://github.com/collectiblescapstone/Kollec-App", "https://kollec.app/"]}
+                        technologies={["vercel", "prisma", "supabase", "capacitor", "next", "chakra-ui", "typescript", "python", "YOLO", "onnx", "openCV"]}
+                        
+                    />
                     <Project
                         title="Missile Command 3D"
                         description={["Participated in Ubisoft's NEXT competition, using the provided API to create a 3D game engine in C++, implementing memory pools and an Entity Component System. ", "Benchmarked different custom implementations of vector/matrix math, using Python to visualize results. ", "Recreated the arcade game Missile Command with 3D graphics, and physics-based missiles"]}
@@ -205,8 +229,7 @@ import IconComp from "../components/IconComp.astro";
                         <p>Languages</p>
                         <div class="flex flex-row flex-wrap gap-2">
                             <IconComp tech="javascript" />
-                            <IconComp tech="html" />
-                            <IconComp tech="css" />
+                            <IconComp tech="typescript" />
                             <IconComp tech="python" />
                             <IconComp tech="java" />
                             <IconComp tech="php" />
@@ -221,6 +244,8 @@ import IconComp from "../components/IconComp.astro";
                     <div class="flex flex-row flex-wrap gap-2">
                         <p>Frameworks / Technologies</p>
                         <div class="flex flex-row flex-wrap gap-2">
+                            <IconComp tech="html" />
+                            <IconComp tech="css" />
                             <IconComp tech="astro" />
                             <IconComp tech="tailwind" />
                             <IconComp tech="react" />
@@ -231,6 +256,13 @@ import IconComp from "../components/IconComp.astro";
                             <IconComp tech="web-assembly" />
                             <IconComp tech="docker" />
                             <IconComp tech="firebase" />
+                            <IconComp tech="supabase" />
+                            <IconComp tech="prisma" />
+                            <IconComp tech="vercel" />
+                            <IconComp tech="YOLO" />
+                            <IconComp tech="onnx" />
+                            <IconComp tech="openCV" />
+                            <IconComp tech="PyTorch" />
                         </div>
                     </div>
                     <div class="flex flex-row flex-wrap gap-2">

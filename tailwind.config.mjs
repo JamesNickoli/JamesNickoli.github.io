@@ -16,6 +16,13 @@ export default {
                 "bg-bright": "var(--bg-bright)"
             }
         },
+        screens: {
+            "sm": "640px",
+            "md": "768px",
+            "lg": "1152px",
+            "xl": "1440px",
+            "2xl": "2552px"
+        }
     },
     plugins: [],
 }
