@@ -1,21 +1,22 @@
 ---
 
 interface Props {
-    title: string;
+    title: string,
     description: string | string[],
     images: {link:string,alt:string}[],
     link: string | string[],
-    technologies: string[];
+    technologies: string[],
+    LLMUse: boolean
 }
 
-const { title, description, images, link, technologies }: Props = Astro.props;
+const { title, description, images, link, technologies, LLMUse }: Props = Astro.props;
 
 import Carousel from './Carousel.astro'
 import CarouselItem from './CarouselItem.astro'
 ---
 
 <div>
-    <Carousel title={title} description={description}, link={link}, technologies={technologies}>
+    <Carousel title={title} description={description}, link={link}, technologies={technologies}, LLMUse={LLMUse}>
         {images.map((img) => 
             <CarouselItem>
                 <div class="relative flex items-center justify-center h-full">

@@ -180,7 +180,7 @@ import IconComp from "../components/IconComp.astro";
                         ]}
                         link={["https://github.com/collectiblescapstone/Kollec-App", "https://kollec.app/"]}
                         technologies={["vercel", "prisma", "supabase", "capacitor", "next", "chakra-ui", "typescript", "python", "YOLO", "onnx", "openCV"]}
-                        
+                        LLMUse={true}
                     />
                     <Project
                         title="Missile Command 3D"
@@ -192,6 +192,7 @@ import IconComp from "../components/IconComp.astro";
                         ]}
                         link="https://github.com/rsninja722/UbisoftNext2024"
                         technologies={["cpp", "python"]}
+                        LLMUse={true}
                     />
                     <Project 
                         title="Esoteric JS Transpiler" 
@@ -202,12 +203,14 @@ import IconComp from "../components/IconComp.astro";
                             "https://rsninja.dev/JSFrick/"
                         ]} 
                         technologies={["javascript", "html", "css"]} 
+                        LLMUse={false}
                     />
                     <Project title="Multiplayer Mastermind" 
                         description={["Built a custom Java package for making GUI programs ( github.com/rsninja722/gamej ) using AWT and Swing, handling multi-threading, rendering that leverages the GPU, asset loading, camera systems, and mouse and keyboard input, also providing documentation and project templates. ", "Defined a communication protocol and wrote a server using Netty that can connect users with different clients. ", "Created a game client and a bot server to also allow individual play."]} 
                         images={[{ link: "/assets/P3_1.JPG", alt: "Two clients playing over the network" }]} 
                         link="https://github.com/rsninja722/MasterMind" 
                         technologies={["java"]} 
+                        LLMUse={false}
                     />
                     <Project title="Webassembly Platformer" 
                         description={["Created a platformer game with C++ using the Raylib game library for the Ludem Dare 51 game jam in 72 hours", "Compiled the game to run on the web with WebAssembly using the Emscripten toolchain"]} 
@@ -220,6 +223,7 @@ import IconComp from "../components/IconComp.astro";
                             "https://rsninja.dev/CabushsKookyClimb/"
                         ]} 
                         technologies={["cpp", "web-assembly"]}
+                        LLMUse={false}
                     />
                     <Project title="Personal Site" 
                         description={["collection of games and programs created for fun"]} 
@@ -227,11 +231,13 @@ import IconComp from "../components/IconComp.astro";
                             { link: "/assets/site1.JPG", alt: "home page" }, 
                             { link: "/assets/site3.JPG", alt: "pixel art program" }, 
                             { link: "/assets/site2.JPG", alt: "cellular automata program" }, 
+                            { link: "/assets/site4.JPG", alt: "web game without libraries/engines" }, 
                         ]} 
                         link={[
                             "https://rsninja.dev",
                         ]} 
                         technologies={["javascript", "html", "css", "web-assembly"]}
+                        LLMUse={false}
                     />
                 </div>
             </VSection>
