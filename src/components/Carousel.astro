@@ -1,62 +1,61 @@
 ---
 // Importing the Astro framework and props interface
 interface Props {
-    title: string,
-    description: string | string[],
-    link?: string | string[],
-    technologies?: string[],
-    LLMUse: boolean
+    title: string;
+    description: string | string[];
+    link?: string | string[];
+    technologies?: string[];
+    LLMUse: boolean;
 }
 const { title, description, link, technologies, LLMUse }: Props = Astro.props;
 
 import IconComp from "./IconComp.astro";
 ---
 
-<div class="fade-in bg-bg-purp-light lg:h-[60svh] flex flex-col lg:flex-row lg:items-center p-1 md:p-6 gap-6 rounded-lg">
-    <!-- Content Section -->
-    <div class="w-full lg:w-1/3 text-center lg:text-left">
-        <div class="flex fade-in">
-            <h2 class="text-2xl font-bold text-t-gold mb-1">
-            {title}</h2>{!LLMUse?<p class="p-2 text-t-dark text-sm">No LLM use</p>:null}
+<div class="fade-in bg-bg-purp-light p-1 md:p-6 lg:h-fit lg:min-h-[60svh] 2xl:min-h-[65svh] flex flex-col justify-between">
+    <div class="flex fade-in">
+        <h2 class="text-2xl font-bold text-t-gold mb-1">
+            {title}
+        </h2>{!LLMUse ? <p class="p-2 text-t-dark text-sm">No LLM use</p> : null}
+    </div>
+    <div class="flex flex-col 2xl:justify-around lg:flex-row 2xl:flex-col gap-6 rounded-lg flex-1">
+        <!-- Content Section -->
+        <div class="w-full h-full lg:w-1/3 2xl:w-full text-center lg:text-left relative lg:flex lg:flex-col my-auto">
+            <ul class="list-disc custom-scrollbar pl-5 space-y-2 lg:overflow-y-scroll lg:overflow-x-hidden lg:max-h-[50svh] 2xl:max-h-[35svh]">
+                {description instanceof Array ? description.map((desc) => <li class="text-left">{desc}</li>) : <li class="fade-in text-left">{description}</li>}
+            </ul>
+            
         </div>
-        <div class="fade-in flex flex-wrap gap-2 mb-4">
-            {technologies ? technologies.map((tech) => <IconComp tech={tech} />) : null}
-        </div>
-        <ul class="list-disc pl-5 space-y-2">
-            {description instanceof Array ? description.map((desc) => <li class="text-left">{desc}</li>) : <li class="fade-in text-left">{description}</li>}
-        </ul>
-        <div class="mt-8">
-            {
-                link ? (
-                    link instanceof Array ? (
-                        link.map((l) => (
-                            <a href={l} class="fade-in text-t-gold-accent pr-4 no-underline">
-                                <button class="hover:bg-t-gold-accent hover:text-bg-red transition-colors duration-300">{l.includes("github") ? "github" : "live demo"}</button>
-                            </a>
-                        ))
-                    ) : (
-                        <a href={link} class="fade-in text-t-gold-accent no-underline">
-                            <button class="hover:bg-t-gold-accent hover:text-bg-red transition-colors duration-300">{link.includes("github") ? "github" : "live demo"}</button>
-                        </a>
-                    )
-                ) : null
-            }
+
+        <!-- Carousel Section -->
+        <div class="fade-in bg-bg-red carousel-container w-full h-[40svh] md:h-[45svh] lg:h-[60svw] xl:h-[25svw] lg:w-2/3 2xl:w-full 2xl:h-[40svh]" style="overflow: scroll;">
+            <div class="carousel-inner">
+                <slot />
+            </div>
+            <div class="bg-gradient-to-r from-bg-red to-transparent absolute left-0 top-0 h-full w-[10%]"></div>
+            <div class="bg-gradient-to-r from-transparent to-bg-red absolute right-0 top-0 h-full w-[10%]"></div>
+            <button class="prev hidden absolute left-2 top-1/2 transform-translate-y-1/2 text-t-main-accent p-2">&#9664;</button>
+            <button class="next hidden absolute right-2 top-1/2 transform-translate-y-1/2 text-t-main-accent p-2">&#9654;</button>
+            <div class="swipe hidden absolute top-0 left-1/2 transform -translate-x-1/2 text-t-dark text-sm">&lt;&lt;&lt; Swipe</div>
         </div>
     </div>
-
-    <!-- Carousel Section -->
-    <div
-        class="fade-in bg-bg-red carousel-container w-full h-[40svh] md:h-[45svh] lg:h-full lg:w-2/3 2xl:w-full 2xl:h-[40svh] relative"
-        style="overflow: scroll;"
-    >
-        <div class="carousel-inner">
-            <slot />
-        </div>
-        <div class="bg-gradient-to-r from-bg-red to-transparent absolute left-0 top-0 h-full w-[10%]"></div>
-        <div class="bg-gradient-to-r from-transparent to-bg-red absolute right-0 top-0 h-full w-[10%]"></div>
-        <button class="prev hidden absolute left-2 top-1/2 transform-translate-y-1/2 text-t-main-accent p-2">&#9664;</button>
-        <button class="next hidden absolute right-2 top-1/2 transform-translate-y-1/2 text-t-main-accent p-2">&#9654;</button>
-        <div class="swipe hidden absolute top-0 left-1/2 transform -translate-x-1/2 text-t-dark text-sm">&lt;&lt;&lt; Swipe</div>
+    <div class="fade-in flex flex-wrap gap-2 my-2">
+        {
+            link ? (
+                link instanceof Array ? (
+                    link.map((l) => (
+                        <a href={l} class="fade-in text-t-gold-accent pr-4 no-underline">
+                            <button class="hover:bg-t-gold-accent hover:text-bg-red transition-colors duration-300">{l.includes("github") ? "github" : "live demo"}</button>
+                        </a>
+                    ))
+                ) : (
+                    <a href={link} class="fade-in text-t-gold-accent no-underline">
+                        <button class="hover:bg-t-gold-accent hover:text-bg-red transition-colors duration-300">{link.includes("github") ? "github" : "live demo"}</button>
+                    </a>
+                )
+            ) : null
+        }
+        {technologies ? technologies.map((tech) => <IconComp tech={tech} />) : null}
     </div>
 </div>
 
@@ -276,7 +275,7 @@ import IconComp from "./IconComp.astro";
                     this.isDragging = true;
                     this.startX = e.touches[0].clientX;
                 },
-                { passive: true },
+                { passive: true }
             );
 
             this.carousel.addEventListener(
@@ -292,7 +291,7 @@ import IconComp from "./IconComp.astro";
                         this.updateCarousel(deltaX);
                     }
                 },
-                { passive: true },
+                { passive: true }
             );
 
             this.carousel.addEventListener("touchend", (e) => {

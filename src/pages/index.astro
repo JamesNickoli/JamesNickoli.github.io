@@ -35,10 +35,24 @@ import IconComp from "../components/IconComp.astro";
         html::-webkit-scrollbar-track {
             background-color: var(--bg-purp-light);
         }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: var(--t-dark);
+            border-radius: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background-color: var(--bg-purp-light);
+        }
     }
 
     @supports not selector(::-webkit-scrollbar) {
         html {
+            scrollbar-color: var(--t-dark) var(--bg-purp-light);
+            scrollbar-width: thin;
+        }
+        .custom-scrollbar {
             scrollbar-color: var(--t-dark) var(--bg-purp-light);
             scrollbar-width: thin;
         }
