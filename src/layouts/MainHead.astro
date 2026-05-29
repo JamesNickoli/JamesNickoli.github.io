@@ -4,7 +4,11 @@ const { title, seoTitle, seoDesc } = Astro.props;
 ---
 
 <head>
-    <SEO title={seoTitle} description={seoDesc} />
+    <SEO title={seoTitle} description={seoDesc} openGraph={{basic: {
+      title: seoTitle,
+      type: "website",
+      image: "https://jamesnicko.li/assets/iconL.png"
+    }}} />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
