@@ -7,6 +7,7 @@ import Experience from "../components/Experience.astro";
 import Project from "../components/Project.astro";
 import { Icon } from "astro-icon/components";
 import IconComp from "../components/IconComp.astro";
+import Post from "../components/Post.astro";
 ---
 
 <style is:global>
@@ -181,6 +182,16 @@ import IconComp from "../components/IconComp.astro";
             </VSection>
             <VSection title="Programming Experience">
                 <Experience imgLink="/assets/MCP_Logo.png" jobTitle="Team Member" company="McMaster Competitive Programming Team" date="Oct 2021 - Aug 2023" technologies={["cpp", "python"]} bulletPoints={["Represented McMaster in the International Collegiate Programming Contest as a member of the junior team in 2021-2022, and placed 3rd out of 26 contestants in the 2022-2023 tryouts, qualifying as a member of the leading team."]} />
+            </VSection>
+
+
+            <VSection title="Articles">
+                <Post
+                    title="Real-Time Visual Identification of Trading Cards"
+                    description="An overview of techniques and a retrospective of the development of a pokemon card identification system."
+                    link="https://medium.com/@JamesNickoli/real-time-visual-identification-of-trading-cards-8e26dd81def6"
+                    imgLink="/assets/article1.jpg"
+                />
             </VSection>
 
             <VSection title="Projects">

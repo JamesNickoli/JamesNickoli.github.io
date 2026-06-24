@@ -1,0 +1,35 @@
+---
+export interface Props {
+    title: string;
+    description: string;
+    link: string;
+    imgLink: string;
+}
+
+const { title, description, link, imgLink } = Astro.props;
+---
+
+<div class="p-6 bg-bg-purp-light rounded-lg shadow-md xl:w-2/3 2xl:w-3/4 overflow-hidden">
+    <div class="flex flex-col md:flex-row justify-between mb-4">
+        <div class="flex flex-col justify-between mb-4">
+            <div class="mb-2 mr-4">
+                <h2 class="fade-in text-xl font-bold text-t-gold">{title}</h2>
+            </div>
+
+            <div class="mr-4">
+                <p class="fade-in mb-4">{description}</p>
+            </div>
+            <div class="mr-4">
+                <a href={link} target="_blank" rel="noopener noreferrer" class="fade-in text-t-gold-accent no-underline">
+                    <button class="hover:bg-t-gold-accent hover:text-bg-red transition-colors duration-300">Read On Medium</button>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="fade-in">
+            <img src={imgLink} alt={title} class="aspect-[3/2] max-w-[80vw] sm:max-w-[60vw] md:max-w-[40vw] lg:max-w-[30vw] xl:max-w-[20vw]  mr-4" />
+        </div>
+    </div>
+
+</div>
